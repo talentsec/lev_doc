@@ -1,0 +1,51 @@
+## 工具包与编排包上传
+
+1. 在`./lev-hub/username.tool`目录或`./lev-hub/username.asset`目录下删除测试使用的 `main.py`，然后执行上传命令，待审核通过后[^10](#潮汐开源社区会审查哪些内容？为什么需要进行审核？)，就可以在潮汐开源社区的个人仓库中看到自己上传好的工具与编排调用了：
+
+```bash
+pdm lev upload
+```
+
+2. 关于工具与编排的版本更新，在第一次上传工具与编排后，如果有更新，需要在用户本地工具与编排的相应目录修改好代码，再次执行一次上传命令，在这里需要注意的是，每次想要上传更新的内容时，需要对`./lev-hub/username.tool`目录下的`pyproject.toml`文件进行修改：
+
+```bash
+[project]
+name = "lev.szczecin.xray"
+version = "0.1.0"	#旧版本号
+description = ""
+requires-python = ">=3.10"
+dependencies = [
+    "levrt>=1.0.4",
+]
+...
+
+[project]
+name = "lev.szczecin.xray"
+version = "0.1.1"	#新版本号
+description = ""
+requires-python = ">=3.10"
+dependencies = [
+    "levrt>=1.0.4",
+]
+...
+
+pdm lev upload
+```
+
+3. 当工具与编排更新后，如果输出的结果数据较原来变化较大，则对应的`models`版本号也要进行更新，`models`的版本号是展示输出数据的版本，与工具的版本（pyproject.toml 文件中的 version）可以不一致：
+
+```python
+model: szczecin/checkdmarc.spf:1.0
+---
+model: szczecin/checkdmarc.spf:1.1
+```
+
+4. 当工具包与编排包上传到潮汐开源平台并通过审核后，用户可以在仓库中设置工具包或编排包状态为公开并发布，当工具包或编排包公开并发布后，其他用户就可以在本地工作区利用命令获取到公开发布的工具包与编排包，进行调用了：
+
+```bash
+pdm add lev.szczecin.checkdmarc
+#pdm add lev.username.tool
+
+pdm add lev.szczecin.server
+#pdm add lev.username.asset
+```
