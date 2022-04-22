@@ -108,7 +108,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 #### 1.2 Credential upload and acquisition
 
-​	1. 1.	Open PowerShell and run as administrator:
+​	1.	Open PowerShell and run as administrator:
 
 ​		![打开 powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3d52434b-96e6-445c-9d0f-2d786f09cd4b.png)
 
