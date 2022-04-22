@@ -20,7 +20,7 @@ $ pdm add levrt
 
 然后会出现要求选择 python解释器版本等各种输入，选择 python3.10 解释器，然后一路向下
 
-![](./img/pdm_init.png)
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/5637a062-817e-4cd2-9c5e-274bb5e18d07.png)
 
 直到屏幕出现 `changes are written to pyproject.toml` 的提示，表示初始化成功
 
@@ -34,7 +34,7 @@ $ pdm add levrt
 
 直到出现 `All Complete` 提示，表示成功
 
-![](./img/add_levrt.jpg)
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/94e35827-a699-4ba6-bad0-4a3fb3cffcd0.JPEG)
 
 如此，初始环境配置完毕，最终会出现的目录结构为：
 
@@ -99,7 +99,7 @@ $ docker ps -a
 
 会出现下图所示内容，图中红框内的实例即是本次代码运行的实例：
 
-![](./img/rdocker_run.jpg)
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/6297a828-112b-4399-85e5-40aef7656e8c.JPEG)
 
 输入打印日志的命令查看最终结果：
 
