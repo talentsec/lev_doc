@@ -456,16 +456,16 @@ The tool page is divided into the following four modules:
 
 ![image_4.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/7d1add24-d3d1-4f65-808f-a28fe95b9163.png)
 
-- Basic Information
+- Basic Information:
   This module briefly describes the function and version of the tool. It mainly describes the use of the tool interface. For example, the direct mode of the tool only needs you to input the url parameter, of which the type is str string.
 
-- Source Code File
+- Source Code File:
   Here you can directly view the invocation source code of the tool for learning and researching.
 
-- Communication Panel 
+- Communication Panel:
   This is the part where you can share your tips and thoughts on using the tool.
 
-- Running Log
+- Running Log:
   You can view the invocation log of the tool
 
 
