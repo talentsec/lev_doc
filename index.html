@@ -13,7 +13,6 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     />
-    
 
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" /> -->
 
@@ -27,27 +26,30 @@
   <body>
     <div id="app">Loading ...</div>
     <script>
+      function getLang() {
+        return "/" + location.hash.slice(2).split("/")[0];
+      }
       window.$docsify = {
-        name: "",
         repo: "",
+        themeColor: "purple",
         loadNavbar: true,
         loadSidebar: true,
-        name: "开发文档",
+        // coverpage: ["/", "/zh-cn/"],
+        onlyCover: false,
+        // name: {
+        //   "/": "Documentation",
+        //   "/zh-cn": "开发文档",
+        // }[getLang()],
         // complete configuration parameters
         search: {
           maxAge: 86400000, // Expiration time, the default one day
           paths: "auto", // or 'auto'
-          placeholder: "Type to search",
 
-          // Localization
           placeholder: {
             "/zh-cn/": "搜索",
             "/": "Type to search",
           },
 
-          noData: "No Results!",
-
-          // Localization
           noData: {
             "/zh-cn/": "找不到结果",
             "/": "No Results",
@@ -80,6 +82,30 @@
           tabComments: true, // default
           tabHeadings: true, // default
         },
+        count: {
+          countable: true,
+          fontsize: "0.9em",
+          color: "rgb(90,90,90)",
+          // language: "chinese",
+          localization: {
+            words: "字123",
+            minute: "分钟",
+          },
+        },
+        copyCode: {
+          buttonText: {
+            "/zh-cn/": "点击复制",
+            "/": "Copy to clipboard",
+          },
+          errorText: {
+            "/zh-cn/": "错误",
+            "/": "Error",
+          },
+          successText: {
+            "/zh-cn/": "复制",
+            "/": "Copied",
+          },
+        },
       };
     </script>
     <!-- Docsify v4 -->
@@ -93,5 +119,6 @@
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
   </body>
 </html>
