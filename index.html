@@ -14,6 +14,13 @@
       href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     />
 
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
+    />
+
+    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" /> -->
 
     <style>
@@ -29,7 +36,12 @@
       function getLang() {
         return "/" + location.hash.slice(2).split("/")[0];
       }
+      var num = 0;
+      mermaid.initialize({ startOnLoad: false });
       window.$docsify = {
+        mergeNavbar: true,
+        logo: "/_media/icon.svg",
+        auto2top: true,
         repo: "",
         themeColor: "purple",
         loadNavbar: true,
@@ -104,6 +116,20 @@
           successText: {
             "/zh-cn/": "复制",
             "/": "Copied",
+          },
+        },
+        markdown: {
+          renderer: {
+            code: function (code, lang) {
+              if (lang === "mermaid") {
+                return (
+                  '<div class="mermaid">' +
+                  mermaid.render("mermaid-svg-" + num++, code) +
+                  "</div>"
+                );
+              }
+              return this.origin.code.apply(this, arguments);
+            },
           },
         },
       };

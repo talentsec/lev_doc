@@ -1,6 +1,9 @@
 * [1. Introduction](1.introduction.md)
 * [2. Reading guide](2.guide.md)
 * [3. Configuration](3.configuration.md)
+    * [3.1 Windows](3.1.windows.md)
+    * [3.2 Mac](3.2.mac.md)
+    * [3.3 Linux](3.3.linux.md)
 * [4. Credential uploading and acquisition](4.credential.md)
 * [5. Hello World](5.hello-world.md)
 * [6. Tool invocation and workflow writing](6.nmap.md)
@@ -13,3 +16,4 @@
 * [13. Upload package](13.upload-package.md)
 * [14. FAQ](14.faq.md)
 * [15. API reference](15.api.md)
+
