@@ -1,8 +1,12 @@
-# api
+# API
 
-## 1. 获取 token
+## 1. 获取 Token
 
-> 获取 jwt 凭证，用以业务 api 的认证
+> 说明
+
+获取 JWT 凭证，用以业务 API 的认证
+
+> 地址
 
 `POST` https://lev.zone/query/token
 
@@ -23,13 +27,17 @@
 
 > 示例
 
-```sh
+```bash
 curl -X POST https://lev.zone/query/token -d '{"username": "$username", "password": "$password", "container": "$container", "port": $port}'
 ```
 
 ## 2. 发起请求
 
-> 发起业务 api 请求
+> 说明
+
+发起业务 api 请求
+
+> 地址
 
 https://lev.zone/query/biz_path
 
@@ -50,6 +58,6 @@ https://lev.zone/query/biz_path
 
 > 示例
 
-```sh
+```bash
 curl 'https://lev.zone/query/antifraud/api/v1/results/?skip=0&limi=10&only_upload=false' -H 'Authorization: $token'
 ```
