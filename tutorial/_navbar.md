@@ -1,3 +1,3 @@
-- 选择文档语言
+- Select Language
   - [:uk: English](/)
   - [:cn: 中文](/zh-cn/)
