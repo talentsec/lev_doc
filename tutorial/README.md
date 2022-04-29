@@ -38,7 +38,7 @@ First of all, in order to run the tools and workflows on Leviathan, you need to 
 
 ​			Enter the system BIOS settings and check whether the BIOS has enabled CPU virtualization support, as shown below:			
 
-​			![开启虚拟化支持.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2e12d9cd-cf65-4c6c-88a2-1b6d42110f22.JPEG)
+​			![Enable virtualization support.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2e12d9cd-cf65-4c6c-88a2-1b6d42110f22.JPEG)
 
 
 
@@ -53,7 +53,7 @@ First of all, in order to run the tools and workflows on Leviathan, you need to 
 
 ​				Update the operating system to the latest version: Windows Settings -> Updates -> Check for Updates
 
-​				Enable the display of file extensions. For details, refer to [Display File Extensions](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+​				Enable the display of file extensions. For details, refer to [File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
 ​			
 
