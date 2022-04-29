@@ -52,13 +52,9 @@
 
 ​			首先需要启用hyper-v模块，Windows家庭版无法查询到hyper-v功能模块，需要特殊方式启用，如下：
 
-
-
 ​				更新操作系统至最新版本，Windows 设置 -> 更新 -> 检查更新
 
-​				开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
-
-​			
+​				开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)			
 
 ​				将下面代码拷入新建文档：			
 
@@ -72,9 +68,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​				将文档另存为install-hyper-v.cmd，右键点击 管理员运行
 
-![安装hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)
-
-​			
+![安装hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)		
 
 ​			安装完毕后输入Y，重启（注意：**如果安装完毕之后更新系统，有可能造成安装无效，需要检查，有必要的话需要重新安装hyper-v**）。
 
