@@ -213,6 +213,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
    ```
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e46b4413-d432-4817-89c3-6abd73b645e8.png)
+   
    Paste the following code:
 
    ```Bash
@@ -224,6 +225,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
    The location for the paste is as shown in the figure below (Tips for beginners:`"buildkit": true` A half width comma needs to be added after the curly braces in the following line, and the code should be pasted in front of the curly braces in the bottom line, otherwise an error will occur).
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/575d3a79-7772-4318-a566-7293f809a4c5.png)
+   
    Click Apply & Restart!
 
    After completing the acceleration operations above, execute the following command again to launch the local environment:
@@ -247,7 +249,9 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 ​		 Please use domestic sources, otherwise the speed will be very slow.
 
 ​		Ubuntu:	[Documentation](https://docs.docker.com/engine/install/ubuntu/)
+
 ​		CentOS:	[Documentation](https://docs.docker.com/engine/install/centos/)
+
 ​		Debian:	[Documentation](https://docs.docker.com/engine/install/debian/)
 ​		  
 
@@ -317,7 +321,7 @@ After the command is executed, the image container will be automatically pulled 
 Finally, in [Account Settings - My Device], you can see that the device is online!  
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/64c575b9-3ea3-494c-b25c-191835f2ba78.png)
 
-Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! Go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
+Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! Go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0).
 
 
 
@@ -334,7 +338,9 @@ If the Docker engine logo in the lower left corner of the graphical interface is
 #### Generate ssh public key
 
 Open the folder (Finder) under Mac, press the combination of `shift`+`command`+`G`, the following pop-up box will appear, input `~/.ssh` . Enter the .ssh directory, and check whether there are "id_rsa、id_rsa.pub" files.
+
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
+
 If not, enter the following command to generate:
 
 ```
@@ -513,11 +519,11 @@ You can see then that the task is being executed, and you can view the results a
 
 Now we have learned the Quick Mode Invocation, but the actual situation of penetration testing changes rapidly. How can we realize the full performance of the tool?
 
-In this chapter， we will learn how to conduct an advanced invocation of tools.
+In this chapter，we will learn how to conduct an advanced invocation of tools.
 
 Here we choose xsstrike to detect the xss vulnerability of the website. Because some websites often need to carry cookies for access, it is necessary to use the raw mode to add the cookie field.
 
-At first, enter the 【Add task】 interface.
+At first, enter the `Add task` interface.
 
 In this interface, choose Raw Mode, and make it as default advanced invocationthe.
 
