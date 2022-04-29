@@ -34,7 +34,7 @@ First of all, in order to run the tools and workflows on Leviathan, you need to 
 ​			It is troublesome to install docker on Windows system. You need to enable the built-in hyper-v function of Windows system first. It is recommended to use Linux system or WSL, which is convenient and fast.(If you do not know the version of your Win10, please search it)
 
 
-##### 			1.1.1 Enable CPU to support virtualization
+##### 			1.1.1 Enable CPU virtualization support
 
 ​			Enter the system BIOS settings and check whether the BIOS has enabled CPU virtualization support, as shown below:			
 
@@ -102,7 +102,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			If the Docker engine logo in the lower left corner of the graphical interface is green, it has been successfully started![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
-​			If it shows that docker fails to launch and reports the error **"Because a Hyper-V component is not running"**, hardware virtualization has not been launched, please perform the first step: **1.1.1 Enable CPU to support virtualization**.
+​			If it shows that docker fails to launch and reports the error **"Because a Hyper-V component is not running"**, hardware virtualization has not been launched, please perform the first step: **1.1.1 Enable CPU virtualization support**
 
 
 
@@ -133,7 +133,7 @@ As shown in the figure above, the prompt that the path cannot be found in red me
 
 ​		```ssh-keygen.exe```
 
-You will be prompted to input, please ignore it, just press the Enter key all the way to the end, until the following prompt appears:
+You will be prompted to input, please ignore it, just press the Enter key all the way to the end, until the following prompt appears(Notes: It is not recommended to use the default rsa encryption method to generate keys, and rsa keys are disabled by default in higher versions of openssh):
 
 ```vbscript
 +---[RSA 2048]----+
@@ -149,7 +149,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 +----[SHA256]-----+
 ```
 
-​	That is completed, now you enter  `ls .ssh` again, the two files mentioned above will be displayed:
+​	After that, you enter  `ls .ssh` again, the two files mentioned above will be displayed:
 
 ![密钥.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/38c66c66-6a58-4609-800a-032a13f0c3c8.JPEG)
 
@@ -221,7 +221,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
      ]
    ```
 
-   Paste the location, as shown in the figure below (Tips for beginners:`"buildkit": true` A half width comma needs to be added after the curly braces in the following line, and the code should be pasted in front of the curly braces in the bottom line, otherwise an error will occur).
+   The location for the paste is as shown in the figure below (Tips for beginners:`"buildkit": true` A half width comma needs to be added after the curly braces in the following line, and the code should be pasted in front of the curly braces in the bottom line, otherwise an error will occur).
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/575d3a79-7772-4318-a566-7293f809a4c5.png)
    Click Apply & Restart!
@@ -258,8 +258,8 @@ Input the command: `ls -la ~/.ssh` to detect whether there is a ssh key in the s
 ```
 $ ssh-keygen -t ecdsa -C "youremail@example.com"
 # Replace the email with Leviathan's registered email
-# Enter all the input options appear 
-# It is not recommended to use the rsa encryption algorithm to generate a key pair because ecdsa is more secure
+# When an input option appears, hit Enter
+# It is not recommended to use the rsa encryption algorithm to generate a key pair because ecdsa is more secure, and the rsa key is disabled by default in the higher version of openssh
 ```
 
 #### 3. Upload
@@ -341,8 +341,8 @@ If not, enter the following command to generate:
 Mac:
 $ ssh-keygen -t ecdsa -C "youremail@example.com"
 # Replace the email with Leviathan's registered email
-# Enter all the input options appear 
-# It is not recommended to use the rsa encryption algorithm to generate a key pair because ecdsa is more secure
+# When an input option appears, hit Enter
+# It is not recommended to use the rsa encryption algorithm to generate a key pair because ecdsa is more secure，and the rsa key is disabled by default in the higher version of openssh
 ```
 
 #### Upload ssh public key
