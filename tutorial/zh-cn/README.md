@@ -480,7 +480,7 @@ INFO:root:Agent is ready
 
 这里我们用wafw00f这个工具来举例，完成一个目标防火墙部署识别任务。
 
-在创建任务时，第一部就是选择运行模式：
+在创建任务时，第一步就是选择运行模式：
 
 - 快速模式：无需代码知识，直接在网页输入参数即可一键启动检测。
 - 高级模式：可以发挥100%的工具能力，高自由度，方便调试和进阶用户使用。
@@ -522,7 +522,7 @@ xsstrike -u "http://xxxx.app.mituan.zone/vulnerabilities/xss_r/?name=1#" --heade
 ```
 
 
-空格为元素间隔转换为列表为：
+空格为元素间隔，转换成列表为下面所示：
 
 ```Bash
 cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilities/xss_r/?name=1#", "--headers","Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low","--skip"]
