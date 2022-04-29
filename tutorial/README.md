@@ -536,7 +536,7 @@ xsstrike -u "http://xxxx.app.mituan.zone/vulnerabilities/xss_r/?name=1#" --heade
 ```
 
 
-Convert spaces as element intervals to a list:
+As element interval, spaces can be converted to a list as shown below:
 
 ```Bash
 cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilities/xss_r/?name=1#", "--headers","Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low","--skip"]
