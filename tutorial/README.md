@@ -31,7 +31,7 @@ First of all, in order to run the tools and workflows on Leviathan, you need to 
 
 ​			If you have already installed Docker on your device, please check its version number, the version number supported by Leviathan is not lower than **20.10.10**, otherwise please update, and you can skip this step.
 
-​			It is troublesome to install docker on Windows system. You need to enable the built-in hyper-v function of Windows system first. It is recommended to use Linux system or WSL, which is convenient and fast.(If you do not know the version of your Win10, please search it)
+​			It is troublesome to install docker on Windows system. You need to enable the built-in hyper-v function of Windows system first. It is recommended to use Linux system or WSL, which is convenient and fast. The following tutorials take Win10 as an example and are divided according to the Win10 system version (If you do not know the version of your Win10, please search it).
 
 
 ##### 			1.1.1 Enable CPU virtualization support
