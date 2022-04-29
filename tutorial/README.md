@@ -12,7 +12,7 @@ Next, let's take a look at how to use Leviathan!
 
 ## Overview
 
-First of all, in order to run the tools and workflows on Leviathan, you need to complete the configuration and setup of the local environment. There are 3 steps in the local environment configuration, namely: creation of the preliminary environment, acquisition and upload of credentials, and startup of the environment. The specific usage of different operating system environments is different. This manual is divided into the installation and configuration of three operating system environments: Windows, Linux, and Mac. Each environment has the following three steps:
+First of all, in order to run the tools and workflows on Leviathan, you need to complete the configuration and setup of the local environment. There are 3 steps in the local environment configuration, namely: creation of the preliminary environment, acquisition and upload of credentials, and startup of the environment. The specific usage of different operating system environments is different. This manual is divided into the installation and configuration of three operating system environments: Windows, Linux and Mac. Each environment has the following three steps:
 
 - Prerequisite environment installation (Docker installation)
 - Credential acquisition and upload
@@ -45,7 +45,7 @@ First of all, in order to run the tools and workflows on Leviathan, you need to 
 
 ##### 			1.1.2 Win10 Home Edition Preliminary Steps
 
-​			It is strongly recommended to upgrade Win10 professional version or use Linux, Mac. **If it is Win10 professional version, enterprise version or education version, please skip this step and enter 1.1.3**
+​			It is strongly recommended to upgrade Win10 professional version or use Linux, Mac. **If it is Win10 professional version, enterprise version or education version, please skip this step and enter 1.1.3**.
 
 ​			First, you need to enable the hyper-v module. The Windows Home Edition cannot query the hyper-v function module. It needs to be enabled in a special way, as follows:
 
@@ -86,7 +86,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ##### 			1.1.3  Win10 Professional Edition, Enterprise Edition, Education Edition
 
-​			If it is the Professional Edition, Education Edition or Enterprise Edition, it don't need to be as troublesome as the Home Edition, just go to Control Panel -> Programs -> Enable or Disable Windows Features -> Check hyper-v, then follow the prompts to restart.
+​			If it is the Professional Edition, Education Edition or Enterprise Edition, it doesn't need to be as troublesome as the Home Edition, just go to Control Panel -> Programs -> Enable or Disable Windows Features -> Check hyper-v, then follow the prompts to restart.
 
 ​			The following steps are common and must be performed on all Windows systems:
 
@@ -96,7 +96,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			Download the docker installation file [docker installer download](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
 
-​			Click the file to start installing docker. (The home version needs to uncheck the Windows container WSL2 option during installation, other versions do not need it)
+​			Click the file to start installing dockerc (The Home version needs to uncheck the Windows container WSL2 option during installation, other versions do not need it). 
 
 ​			Wait for the successful installation and then restart. After restarting, click the docker client icon on the desktop. Docker has a graphical interface under **Windows**:
 
@@ -118,7 +118,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3e4dd10e-3021-4647-a9e4-09877140b6f6.png)
 
-​	If the content shown above does not appear, please refer to the following document to install the SSH command Install ssh.
+​	If the content shown above does not appear, please refer to the following document to install the ssh command: Install ssh.
 ​	[安装ssh](https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse)
 
 ​	Then enter the command:
@@ -208,7 +208,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
    If the download speed of the container is too slow due to network reasons, it can be accelerated by changing the Docker image source:
 
    ```Bash
-   Open Docker,click Settings
+   Open Docker, click Settings
    Click Docker Engine, the below will show
    ```
 
@@ -221,7 +221,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
      ]
    ```
 
-   Paste the location, as shown in the figure below (Tips for beginners:`"buildkit": true` A half width comma needs to be added after the curly braces in the following line, and the code should be pasted in front of the curly braces in the bottom line, otherwise an error will occur)
+   Paste the location, as shown in the figure below (Tips for beginners:`"buildkit": true` A half width comma needs to be added after the curly braces in the following line, and the code should be pasted in front of the curly braces in the bottom line, otherwise an error will occur).
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/575d3a79-7772-4318-a566-7293f809a4c5.png)
    Click Apply & Restart!
@@ -253,7 +253,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 
 #### 2. Generate ssh key
 
-Input the command: `ls -la ~/.ssh` to detect whether there is an SSH key in the system, if not, follow the tutorial to generate a key pair:	
+Input the command: `ls -la ~/.ssh` to detect whether there is a ssh key in the system, if not, follow the tutorial to generate a key pair:	
 
 ```
 $ ssh-keygen -t ecdsa -C "youremail@example.com"
@@ -264,7 +264,7 @@ $ ssh-keygen -t ecdsa -C "youremail@example.com"
 
 #### 3. Upload
 
-Log in to Leviathan, in `Account settings` - `Public key management`, choose to upload the SSH public key, input the name at will, and copy the content of the id_rsa.pub or id_ecdsa.pub public key file in the .ssh folder generated by the steps above to the public key. 
+Log in to Leviathan, in `Account settings` - `Public key management`, choose to upload the ssh¥ public key, input the name at will, and copy the content of the id_rsa.pub or id_ecdsa.pub public key file in the .ssh folder generated by the steps above to the public key. 
 
 #### 4.Configure the ssh config file
 
@@ -278,20 +278,18 @@ Host lev
 	User username # Leviathan username
 ```
 
-然后 输入 `ssh lev` 命令，验证是否配置成功。
+Then input the command ssh lev to verify if the configuration was successful:
 
 ```Bash
 $ ssh lev
 Connection to service.lev.zone closed. # Succeessful
 ```
 
-
-Then input the command ssh lev to verify that the configuration was successful:
+If the following message is returned, there is a problem with the configuration file, please check the previous configuration steps:
 
 ```Bash
 $ ssh lev
-Permission denied (publickey). # If this message displays, the ssh public key is incorrectly configured. Please check whether the SSH public key and username are correct.
-
+Permission denied (publickey). # If this message displays, the ssh public key is incorrectly configured. Please check whether the ssh public key and username are correct.
 ```
 
 If the process above shows an error, you can also directly input the following command: 
@@ -304,7 +302,7 @@ The following statement appears:
 
 First, add a device on the [Account Settings - My Device] page, enter a name, and click Submit.
 
-Next, execute the following command to launch the local environment (if the pull speed is slow, it is recommended to modify the image source of docker to the University of  Science and Technology of China):
+Next, execute the following command to launch the local environment (if the pull speed is slow, it is recommended to modify the image source of docker to the University of Science and Technology of China):
 
 
 ```bash
@@ -319,7 +317,7 @@ After the command is executed, the image container will be automatically pulled 
 Finally, in [Account Settings - My Device], you can see that the device is online!  
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/64c575b9-3ea3-494c-b25c-191835f2ba78.png)
 
-Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
+Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! Go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
 
 
 
@@ -333,7 +331,7 @@ If you have already installed Docker on your device, please check its version, t
 If the Docker engine logo in the lower left corner of the graphical interface is green, it has been successfully launched.
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
-#### Generate SSH public key
+#### Generate ssh public key
 
 Open the folder (Finder) under Mac, press the combination of `shift`+`command`+`G`, the following pop-up box will appear, input `~/.ssh` . Enter the .ssh directory, and check whether there are "id_rsa、id_rsa.pub" files.
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
@@ -347,9 +345,9 @@ $ ssh-keygen -t ecdsa -C "youremail@example.com"
 # It is not recommended to use the rsa encryption algorithm to generate a key pair because ecdsa is more secure
 ```
 
-#### Upload SSH public key
+#### Upload ssh public key
 
-Log in to Leviathan, in `Account settings` - `Public key management`, choose to upload the SSH public key, input the name at will, and copy the content of the id_rsa.pub or id_ecdsa.pub public key file generated in the steps above to the public key.
+Log in to Leviathan, in `Account settings` - `Public key management`, choose to upload the ssh public key, input the name at will, and copy the content of the id_rsa.pub or id_ecdsa.pub public key file generated in the steps above to the public key.
 
 ```sh
 # Mac: View .pub file，copy and upload to Leviathan(recommended)
@@ -358,7 +356,7 @@ or
 $ cat ~/.ssh/id_rsa.pub 
 ```
 
-#### configure ssh config file
+#### Configure ssh config file
 
 Firstly, you need to find the file directory where the ssh public key is stored:
 Run the command:`touch ~/.ssh/config` to create a config file and write the following configuration:
@@ -382,7 +380,7 @@ If the following message is returned, there is a problem with the configuration 
 
 ```Bash
 $ ssh lev
-Permission denied (publickey). # This message indicates that the ssh public key is incorrectly configured, please check if the ssh public key and username are correct
+Permission denied (publickey). # This message indicates that the ssh public key is incorrectly configured, please check if the ssh public key and username are correct.
 
 ```
 
@@ -466,7 +464,7 @@ The tool page is divided into the following four modules:
   This is the part where you can share your tips and thoughts on using the tool.
 
 - Running Log:
-  You can view the invocation log of the tool
+  You can view the invocation log of the tool.
 
 
 ---
@@ -479,9 +477,9 @@ Click directly on the upper right of the tool `Create new task` to quickly enter
 
 ![image_5.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/b57a17db-c6af-4095-8799-0d1f922bf5bf.png)
 
-#### 2.1.2 Method 2 Favorite tools/create tasks after arranging
+#### 2.1.2 Method 2: Collect tools/workflows and create tasks
 
-On the top right of the tool page, select collect tool, add tool to `Favorites`. After adding to Favorites, you can view favorite tools and create new tasks in `My Favorites`.
+On the top right of the tool page, select Collect tool, add tool to `Favorites`. After that, you can view favorite tools and create new tasks in `My Favorites`.
 
 ![image_6.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/37a60e4f-ba39-490d-aa75-25ca6511019b.png)
 
@@ -490,47 +488,47 @@ On the top right of the tool page, select collect tool, add tool to `Favorites`.
 
 Let's take a look at what information is needed to be filled in to complete the creation of the task!
 
-Here we use the wafw00f tool as an example to complete a target firewall deployment identification task.
+Here we take the wafw00f as an example to complete a target firewall deployment identification task.
 
 When creating a task, the first step is to select the run mode:
 
 
-- Quick mode: No code knowledge is required, and the detection can be started with one click by directly entering parameters on the web page.
-- Advanced mode: 100% of the tool capabilities can be exerted, with a high degree of freedom, which is convenient for debugging and advanced users.
+- Quick mode: No code knowledge is required, and the detection can be enabled with one click by directly entering parameters on the web page.
+- Customized mode: 100% of the tool capabilities can be exerted, with a high degree of freedom, which is convenient for debugging and use for advanced users.
 
 
-#### 2.3.1 Fast Mode Invocation
+#### 2.3.1 Quick Mode 
 
-Firstly, select the quick-use mode, make the invocation method remain default, and then fill in the parameters required by the task and submit it.
+Firstly, select the Quick mode, make the invocation method remain default, and then fill in the parameters required by the task and submit it.
 
-A simple invocation to complete a detection only requires you to fill in the basic target information.
+In this mode, one detection demands only some basic taget information.
 
 ![image_7.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2d6c5bff-8d80-4b93-a18f-dc107b05080d.png)
 
-You can see that the task is being executed, and you can view the result after the execution has been done.
+You can see then that the task is being executed, and you can view the results after the task has been done.
 
 ![image_8.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/103afcb5-1282-4e78-93ac-91a87e82ab9e.png)
 
-#### 2.3.2 Raw mode usage
+#### 2.3.2 Customized Mode 
 
-Now we have learned simple invocations, but the actual situation of penetration testing has changed rapidly. How can we use the best of the tool?
+Now we have learned the Quick Mode Invocation, but the actual situation of penetration testing changes rapidly. How can we realize the full performance of the tool?
 
-This chapter teaches you how to use raw mode to make advanced invocations of tools.
+In this chapter， we will learn how to conduct an advanced invocation of tools.
 
 Here we choose xsstrike to detect the xss vulnerability of the website. Because some websites often need to carry cookies for access, it is necessary to use the raw mode to add the cookie field.
 
-The same as the simple mode, first enter the 【add task】 interface.
+At first, enter the 【Add task】 interface.
 
-In the 【add task】 interface, the mode is raw, and the raw mode defaults to advanced invocation, which remains unchanged.
+In this interface, choose Raw Mode, and make it as default advanced invocationthe.
 
 
 ![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4ebf3832-7b5c-45c4-af0e-e783b9a98a9e.png)
 
-The uses of the tool command and of the command line are exactly the same, the only difference is that the cli parameter is a list. The only thing we have to do is to upload the input command in the form of a list into the cli parameter.
+The use of the tool command and of the command line is exactly the same, the only difference is that the cli parameter is a list. The only thing we have to do is to upload the input command in the form of a list into the cli parameter.
 
-If you want to learn about the parameters and commands of the specific tool, you can move to the official document of this tool.
+If you want to learn about the parameters and commands of one specific tool, you can move to the official document of this tool.
 
-For example, we want to perform xss detection on a URL, but this URL requires cookie access. Xsstrike specifies the flag of the url as `-u` and the flag of the http request header as`—-headers`. We need xsstrike to run without confirmation and in the interactive mode with option —-`—-skip`
+For example, we want to conduct xss detection on a URL, but this URL requires cookie access. Xsstrike specifies the flag of the url as `-u` and the flag of the http request header as`—-headers`. We need xsstrike to run without confirmation and in the interactive mode with option —-`—-skip`
 
 
 ```Bash
@@ -552,26 +550,26 @@ Then submit it.
 
 ### 2.4 View Results
 
-After the execution of the task, click `Operation result` to view the running result of the task, then a simple tool invoke has been completed.
+After the execution of the task, click `Operation result` to view the running result of the task, then a simple tool invocation has been completed.
 
 ![image_11.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4d2d5b55-132a-4520-966f-40710c32e975.png)
 
 ### 2.5 Debug
 
-Unexpected errors may occur during the task execution, most of which are caused by inputting parameters, such as the inaccessible target being and the wrong URL. So how do we debug it?
+Unexpected errors may occur during the task execution, most of which are caused by input parameters, such as the target being inaccessible, or simply typing the wrong URL. So how do we debug it?
 
 ![image_12.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/c036186f-3f36-4808-8d48-c2fd68ace522.png)
 
-Here you can see that the task is running. Firstly, you can view the task log by the log button to view the running status of the task.
+Here you can see that the task is running. Firstly, you can view the task log by clicking the log button to view the running status of the task.
 
 ![image_13.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/54f69ed2-27a6-4a23-96bf-1f18aa04a97b.png)
 
-If the log does not directly identify or solve the problem, select the Debug button.
+If the log cannot be used to directly identify or solve the problem, select the Debug button.
 
 ![image_14.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e5d315ac-9a61-48a4-8bca-cf4320e44af2.png)
 
 The platform will give a debug command. We copy this command into the command line of the environment for execution, and we can enter the debug command line inside the container.
 
-Ipdb is a python code command-line debugging tool that integrates ipython. For specific use, you can move to the document of ipdb.
+Ipdb is a python code command-line debugging tool that integrates ipython. For specific use, you can move to the Documentation of ipdb.
 
 ![image_15.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4d65446f-dfc3-4e73-860b-c3eeb323dcfc.png)
