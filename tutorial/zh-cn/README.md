@@ -123,7 +123,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​		``` cd ~```
 
-​	2. 上述命令进入当前用户主目录，接着输入```ls .ssh```命令，查看是否存在ssh密钥，即“id_ed25519”、“id_ed25519.pub”这两个文件：
+​	2. 上述命令进入当前用户家目录，接着输入```ls .ssh```命令，查看是否存在ssh密钥，即“id_ed25519”、“id_ed25519.pub”这两个文件：
 
 ![查看ssh密钥.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2997d374-f873-439b-ba77-d567adae155e.png)
 
