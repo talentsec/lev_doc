@@ -2,7 +2,7 @@
 
 Welcome to Leviathan, where you can easily invoke all the integrated security tools and workflows on the platform to quickly detect assets, or become a developer/contributor, contributing tools and workflows to other security personnel.
 
-In this document, we mainly teach you how to use tools and workflows on Leviathan. If you are interested in uploading tools or workflows, please move to the [development document](https://lev.zone/portal/developer).
+In this document, we mainly teach you how to use tools and workflows on Leviathan. If you are interested in uploading tools or workflows, please move to the [development document](https://lev.zone/docs/).
 
 Different from the traditional online security tool integration platform, Leviathan achieves dual-end separation of task distribution and task operation in terms of structure. **①The invocation and run of tools；②the production and storage of data, all rely on the user's private local environment. It does not go through Leviathan cloud server, thus ensuring the data security and privacy security of every security personnel**. In addition, Leviathan supports one-click startup of tools and detection tasks, and detection task can be completed without downloading/deploying/updating tools or any code!
 
