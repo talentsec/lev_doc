@@ -12,9 +12,9 @@ Next, let's take a look at how to use Leviathan!
 
 ## Overview
 
-First of all, in order to run the tools and workflows on Leviathan, you need to complete the configuration and setup of the local environment. There are 3 steps in the local environment configuration, namely: creation of the preliminary environment, acquisition and upload of credentials, and startup of the environment. The specific usage of different operating system environments is different. This manual is divided into the installation and configuration of three operating system environments: Windows, Linux and Mac. Each environment has the following three steps:
+First of all, in order to run the tools and workflows on Leviathan, you need to complete the configuration and setup of the local environment. There are 3 steps in the local environment configuration, namely: Preliminary Environment Installation, Acquisition and Upload of credentials, and startup of the environment. The specific usage of different operating system environments is different. This manual is divided into the installation and configuration of three operating system environments: Windows, Linux and Mac. Each environment has the following three steps:
 
-- Prerequisite environment installation (Docker installation)
+- Preliminary Environment Installation (Install Docker)
 - Credential acquisition and upload
 - Environment startup
 
@@ -25,85 +25,80 @@ First of all, in order to run the tools and workflows on Leviathan, you need to 
 
 ### Windows
 
-#### 	1.1  Preliminary environment (installing Docker)
+#### 	1.1  Preliminary Environment Installation (Install Docker)
 
-​			Preliminary knowledge: [What is docker](https://www.redhat.com/zh/topics/containers/what-is-docker)
+Pre-knowledge: [what is docker](https://www.redhat.com/zh/topics/containers/what-is-docker)
 
-​			If you have already installed Docker on your device, please check its version number, the version number supported by Leviathan is not lower than **20.10.10**, otherwise please update, and you can skip this step.
-
-​			It is troublesome to install docker on Windows system. You need to enable the built-in hyper-v function of Windows system first. It is recommended to use Linux system or WSL, which is convenient and fast. The following tutorials take Win10 as an example and are divided according to the Win10 system version (If you do not know the version of your Win10, please search it).
-
-
-##### 			1.1.1 Enable CPU virtualization support
-
-​			Enter the system BIOS settings and check whether the BIOS has enabled CPU virtualization support, as shown below:			
-
-​			![Enable virtualization support.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2e12d9cd-cf65-4c6c-88a2-1b6d42110f22.JPEG)
+ If Docker has been installed on your device, please check its version number. Leviathan supports 20.10.10 and above. If the condition is met, you can skip this step, otherwise, please install or update Docker as follows.
+ 
+ Docker installation on Windows is complicated. Firstly, you need to enable the built-in 'hyper-v' function on Windows (therefore, it is recommended to use Linux system or WSL instead of Windows). The following tutorial takes Win10 as an example, and explains differences when using differnet Win10 system Edition (If you don't know your system Edition, feel free to google it).
 
 
 
+##### 1.1.1 Enable CPU virtualization support
 
-##### 			1.1.2 Win10 Home Edition Preliminary Steps
+ Enter the BIOS settings in system and check whether the BIOS has enabled CPU virtualization support as below.
 
-​			It is strongly recommended to upgrade Win10 professional version or use Linux, Mac. **If it is Win10 professional version, enterprise version or education version, please skip this step and enter 1.1.3**.
-
-​			First, you need to enable the hyper-v module. The Windows Home Edition cannot query the hyper-v function module. It needs to be enabled in a special way, as follows:
-
+ ![Enable virtualization support.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2e12d9cd-cf65-4c6c-88a2-1b6d42110f22.JPEG)
 
 
-​				Update the operating system to the latest version: Windows Settings -> Updates -> Check for Updates
 
-​				Enable the display of file extensions. For details, refer to [File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+##### 1.1.2 Win10 Home Edition Pre-step
 
-​			
+It is strongly recommended to upgrade to Win10 Professional version or use Linux, Mac. If you use Win10 Professional Edition, Enterprise Edition or Education Edition, please skip this step and enter 1.1.3.
 
-​				Copy the following code into the new document:
+First, you need to enable the hyper-v module. The Windows Home Edition cannot query the 'hyper-v' function module. It needs to be enabled in a special way, as follows:
 
-```vbscript
+Update the operating system to the latest version, Windows Settings -> Update -> Check for updates
+
+Enable the display of file extensions. For details [refer to File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+
+Copy the following code into a new document:
+
+
+```
 pushd "%~dp0"
 dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
 for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 del hyper-v.txt
-Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL 
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
 ```
 
-​				Save the document as install-hyper-v.cmd, right click and run as administrator.
+ Save the document as install-hyper-v.cmd, right click and run as administrator.
 
-![安装hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)
-
-​			
-
-​			After the installation is complete, enter Y and restart. **(Note: If the system is updated after the installation is complete, it may cause the installation to be invalid, you need to check, and if necessary, you need to reinstall hyper-v)**
-​			
-
-​			Repeat the steps above, save the following code as change.cmd and run as administrator:
-
-​			``` REG ADD "HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion" /v EditionId /T REG_EXPAND_SZ /d Professional /F```
-
-​			So far, Win10 home version hyper-v is enabled.
+![install hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)
 
 
 
-##### 			1.1.3  Win10 Professional Edition, Enterprise Edition, Education Edition
+ After the installation is completed, enter Y and restart. (Note: **If the system is updated after the installation is completed, it may cause the installation to be invalid, you need to check, and if necessary, you need to reinstall hyper-v**)
 
-​			If it is the Professional Edition, Education Edition or Enterprise Edition, it doesn't need to be as troublesome as the Home Edition, just go to Control Panel -> Programs -> Enable or Disable Windows Features -> Check hyper-v, then follow the prompts to restart.
 
-​			The following steps are common and must be performed on all Windows systems:
+ Repeat the above steps, save the following code as change.cmd and run as administrator.
 
-​			
+ `REG ADD "HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion" /v EditionId /T REG_EXPAND_SZ /d Professional /F`
 
-​			Enable the display of file extensions. For details, refer to [Display File Extensions](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+ Now, the Win10 Home Ediiton hyper-v should be enabled.
 
-​			Download the docker installation file [docker installer download](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
 
-​			Click the file to start installing dockerc (The Home version needs to uncheck the Windows container WSL2 option during installation, other versions do not need it). 
 
-​			Wait for the successful installation and then restart. After restarting, click the docker client icon on the desktop. Docker has a graphical interface under **Windows**:
+##### 1.1.3 Win10 Professional Edition, Enterprise Edition, Education Edition
 
-​			If the Docker engine logo in the lower left corner of the graphical interface is green, it has been successfully started![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
+ If you use Win10 Professional Edition, Education Edition, or Enterprise Edition, it won't be as complicated as the Home Edition. Go to Control Panel -> Programs -> Enable or Disable Windows functions -> Check hyper-v, and then follow the prompts to restart the system.
 
-​			If it shows that docker fails to launch and reports the error **"Because a Hyper-V component is not running"**, hardware virtualization has not been launched, please perform the first step: **1.1.1 Enable CPU virtualization support**
+ The following steps should and must be performed on all Windows systems.
 
+
+ Enable the display of file extensions. For details, refer to [File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+
+ Download the docker installation file. [docker installer download](https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header)
+
+ Click the file to install docker (the Home Edition requires that Windows Container WSL2 should be unchecked during the installation; This step is not needed in other Win Editions).
+
+ Wait for the installation to restart successfully. After restarting, open Docker Desktop by clicking the icon. Docker has a graphical interface under **Windows**.
+
+ When the Docker Logo on the lower left corner is green, it means you have successfully launched Docker![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
+
+ If it displays that docker fails to launch and reports the error **"Hyper-V component is not running"**, it means that hardware virtualization has not been started. Please perform the first step: **1.1.1 to enable CPU virtualization support**.
 
 
 #### 1.2 Credential upload and acquisition
@@ -329,11 +324,12 @@ Next, let's take a look at how to use Leviathan to run tools/workflows for asset
 
 #### Install docker
 
-If you have already installed Docker on your device, please check its version, the version supported by Leviathan is not lower than **20.10.10** , otherwise you need to update it. Go to the download page of Docker's official website [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/), and find the Docker that matches your computer's operating system to download and install. 
-**Mac** has a graphical interface for Docker:
+If Docker has been installed on your device, please check its version number. Leviathan supports 20.10.10 and above. If the condition is met, you can skip this step, otherwise, please install or update Docker as follows. 
 
-If the Docker engine logo in the lower left corner of the graphical interface is green, it has been successfully launched.
-![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
+Download the [docker installation file](https://docs.docker.com/get-docker/)
+
+Click the file to launch docker. Open Docker Desktop by clicking the icon. Docker has a graphical interface under Mac.
+When the Docker Logo on the lower left corner is green, it means you have successfully launched Docker.![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
 #### Generate ssh public key
 
@@ -477,13 +473,13 @@ The tool page is divided into the following four modules:
 
 You can create a task after you find the tool you want to run!
 
-#### 2.1.1 Method 1: Create a new task on the tool page
+#### 2.2.1 Method 1: Create a new task on the tool page
 
 Click directly on the upper right of the tool `Create new task` to quickly enter the invocation interface of the tool.
 
 ![image_5.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/b57a17db-c6af-4095-8799-0d1f922bf5bf.png)
 
-#### 2.1.2 Method 2: Collect tools/workflows and create tasks
+#### 2.2.2 Method 2: Collect tools/workflows and create tasks
 
 On the top right of the tool page, select Collect tool, add tool to `Favorites`. After that, you can view favorite tools and create new tasks in `My Favorites`.
 
