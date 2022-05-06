@@ -82,20 +82,21 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			以下步骤通用，所有Windows系统都必须执行：​			
 
-​			开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+​- 开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
-​			下载docker安装文件[docker安装程序下载](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
+​- [下载docker安装文件](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
 
-​			点击文件开始安装docker（家庭版需要在安装时取消勾选Windows容器WSL2那个选项，其他版本不需要）
+​- 点击文件开始安装docker（家庭版需要在安装时取消勾选Windows容器WSL2那个选项，其他版本不需要）
 
-​			等待安装成功重启。重启之后，点击docker桌面客户端图标，**Windows**下docker有图形化界面：
+​- 等待安装成功重启
+
+- 重启之后，点击docker桌面客户端图标，**Windows**下docker有图形化界面：
 
 ​			图形化界面左下角docker引擎标识呈绿色则成功启动
 
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
 ​			如果显示docker启动失败，报错“**因为一个Hyper-V组件未运行**”，那么就是没有启动硬件虚拟化，请执行第一步：**1.1.1 开启CPU支持虚拟化**
-
 
 #### 1.2 凭证上传与获取
 
@@ -110,9 +111,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 ​	如果没有出现上图所示内容，请参照以下文档安装ssh命令：
 ​	[安装ssh](https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse)
 
-​	然后输入命令：
-
-​		``` cd ~```
+​	然后输入命令：``` cd ~```
 
 ​	2. 上述命令进入当前用户家目录，接着输入```ls .ssh```命令，查看是否存在ssh密钥，即“id_ed25519”、“id_ed25519.pub”这两个文件：
 
@@ -157,7 +156,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
        User username # 这里将username换成你在潮汐安全平台的用户名，非邮箱名！
    ```
 
-   保存完毕，**将此文件名修改为`config`**，注意，此处没有txt的后缀名，类型为文件，而不是文本文档。
+   保存完毕，将此文件名修改为`config`，注意，此处没有txt的后缀名，类型为文件，而不是文本文档。
 
 6. 在powershell中输入测试命令`ssh lev`（$符号无意义，请勿输入）：
 
@@ -227,8 +226,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
    最终，在【账户设置-我的设备】中，可以看到该设备已经上线！
    
-   进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
-​	
+	
 
 ### Linux
 
@@ -311,7 +309,6 @@ INFO:root:Agent is ready
 
 接下来，让我们来看看怎么使用潮汐来运行工具/编排，进行资产的安全检测吧！
 
-进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
 
 
 ### Mac
@@ -330,9 +327,9 @@ INFO:root:Agent is ready
 
 #### 生成ssh公钥
 
-在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件!
+在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件
 
-[image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
+![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
 
 如没有，则在命令行输入下列命令来生成：
 
@@ -400,8 +397,6 @@ INFO:root:Agent is ready
 ```
 
 执行命令后将自动拉取镜像容器、启动容器，整个过程可能持续几分钟的时间。待容器全部启动完毕则一切准备就绪！
-
-之后进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
 
 
 
