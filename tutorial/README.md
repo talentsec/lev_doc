@@ -51,7 +51,7 @@ First, you need to enable the hyper-v module. The Windows Home Edition cannot qu
 
 Update the operating system to the latest version, Windows Settings -> Update -> Check for updates
 
-Enable the display of file extensions. For details [refer to File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+Enable the display of file extensions. For details, [refer to File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
 Copy the following code into a new document:
 
@@ -66,9 +66,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
  Save the document as install-hyper-v.cmd, right click and run as administrator.
 
-![install hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)
-
-
+![install hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/575279f5-e410-4348-963b-349bdeb858a6.JPEG)
 
  After the installation is completed, enter Y and restart. (Note: **If the system is updated after the installation has been completed, it may cause the installation to be invalid, you need to check, and if necessary, you need to reinstall hyper-v**)
 
@@ -105,9 +103,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​	1.	Open PowerShell and run as administrator:
 
-​		![打开 powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3d52434b-96e6-445c-9d0f-2d786f09cd4b.png)
-
-
+​		![open powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/ae0c173f-92ee-455f-88bf-87ece5ca95bb.JPEG)
 
 ​	Enter ssh, line feed, and check whether the system has the ssh command installed:			
 
@@ -488,10 +484,7 @@ On the upper right of the tool page, select Collect, add tool to `Collection`. A
 
 Let's take a look at what information is needed to be filled in to complete the creation of the task!
 
-Here we take the wafw00f as an example to complete a target firewall deployment identification task.
-
 When creating a task, the first step is to choose the run mode:
-
 
 - Quick Mode: No code knowledge is required, and the detection can be enabled with one click by directly entering parameters on the web page.
 - Customized Mode: 100% of the tool capabilities can be exerted, with a high degree of freedom, which is convenient for debugging and use for advanced users.
@@ -503,11 +496,11 @@ First, choose the simple mode, make the Method of invocation remain default(that
 
 In this mode, one detection demands only some basic taget information.
 
-![image_7.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2d6c5bff-8d80-4b93-a18f-dc107b05080d.png)
+![image_7.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/0bd2ea8b-9514-4b55-a7e6-5127ce9d3c45.JPEG)
 
 You can see then that the task is being executed, and you can view the results after the task has been done.
 
-![image_8.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/103afcb5-1282-4e78-93ac-91a87e82ab9e.png)
+![image_8.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/0c5e9676-834b-4ced-a74c-acdd6599372a.JPEG)
 
 #### 2.3.2 Customized Mode 
 
@@ -522,7 +515,7 @@ At first, enter the `New task` page.
 On this page, choose Raw Mode, and make the Method of invocation remain default(that is, Customized Mode).
 
 
-![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4ebf3832-7b5c-45c4-af0e-e783b9a98a9e.png)
+![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/be280f8d-1a0c-4bf5-bf02-fe4ee5a725c9.JPEG)
 
 The use of the tool command and of the command line is exactly the same, the only difference is that the cli parameter is a list. The only thing we have to do is to upload the input command in the form of a list into the cli parameter.
 
@@ -543,8 +536,7 @@ cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilit
 
 ```
 
-
-![image_10.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/cd49c205-6e13-4b50-8c5f-39bbbe3f54ab.png)
+![image_10.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/bdb7143f-2a95-4735-b867-89763e615798.JPEG)
 
 Then submit it.
 
@@ -552,21 +544,19 @@ Then submit it.
 
 After the execution of the task, click `Run result` to view the running result of the task, then a simple tool invocation has been completed.
 
-![image_11.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4d2d5b55-132a-4520-966f-40710c32e975.png)
+![image_11.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2eb75d26-4fd7-4073-b538-f161fdc7a3be.JPEG)
 
 ### 2.5 Debug
 
-Unexpected errors may occur during the task execution, most of which are caused by input parameters, such as the target being inaccessible, or simply typing the wrong URL. So how do we debug it?
+Unexpected errors may occur during the task execution, most of which are caused by input parameters, such as the target inaccessible, or simply the wrong URL. So how do we debug it?
 
-![image_12.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/c036186f-3f36-4808-8d48-c2fd68ace522.png)
+![image_12.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/efc3a8d5-6d97-4b3a-b2b7-803e94136411.JPEG)
 
-Here you can see that the task is running. Firstly, you can view the task log by clicking the Log button to view the running status of the task.
-
-![image_13.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/54f69ed2-27a6-4a23-96bf-1f18aa04a97b.png)
+Here you can see that the task is running. First, you can view the task log by clicking the Log button to view the running status of the task.
 
 If the log cannot be used to directly identify or solve the problem, select the Debug button.
 
-![image_14.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e5d315ac-9a61-48a4-8bca-cf4320e44af2.png)
+![image_13.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4dd15574-2cfd-403d-92d9-2c661f26a24b.JPEG)
 
 The platform will give a debug command. We copy it into the command line of the environment for execution, and we can enter the debug command line inside the container.
 
