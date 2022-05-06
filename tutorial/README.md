@@ -84,7 +84,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
  Enable the display of file extensions. For details, refer to [File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
- [Download the docker installation file](https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header).
+[Download the docker installation file](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe).
 
  Click the file to install docker (the Home Edition requires that Windows Container WSL2 should be unchecked during the installation; This step is not needed in other Win Editions).
 
@@ -111,9 +111,9 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​	2.	Enter the current user's home directory with the command above, and then enter the ``` ls .ssh```command to check whether the ssh key exists, namely the two files  "id_ed25519" 、"id_ed25519.pub" :
 
-![Check ssh key.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2997d374-f873-439b-ba77-d567adae155e.png)
+![Check ssh key.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/fc1959af-8a2a-45ee-af59-22cf8b83953a.JPEG)
 
-As shown in the picture above, the prompt that the path cannot be found in red means that the file does not exist. At this time, it needs to be created (**if it exists, skip the generation step directly**), enter the following command, and execute it in a new line:
+As shown in the picture above, the prompt that the path cannot be found in red means that the file does not exist. At this time, it needs to be created ( **if it exists, skip the generation step directly** ), enter the following command, and execute it in a new line:
 
 ​		```ssh-keygen.exe -t ed25519```
 
@@ -303,7 +303,6 @@ Finally, in [Account Settings - My Device], you can see that the device is onlin
 Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! 
 
 
-
 ### Mac
 
 #### Install docker
@@ -365,11 +364,9 @@ If the following message is returned, there is a problem with the configuration 
 ```Bash
 $ ssh lev
 Permission denied (publickey). # This message indicates that the ssh public key is incorrectly configured, please check if the ssh public key and username are correct.
-
 ```
 
 If the process above shows an error, you can also directly enter the following command: 
- 
 ```ssh username@service.lev.zone -p 2222```（the username is your Leviathan username，not email!）
 
 The following statement appears:
@@ -443,7 +440,7 @@ You can create a task after you find the tool you want to run!
 
 #### 2.2.1 Method 1: Create a new task on the tool page
 
-Click directly `Create new task` on the upper right of the tool page to quickly enter the invocation interface of the tool.
+Click directly `New Task` on the upper right of the tool page to quickly enter the invocation interface of the tool.
 
 ![header_nmap.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/16eb4d67-9c99-41ee-9bca-0f1e4b6e0d8f.JPEG)
 
@@ -457,14 +454,16 @@ On the upper right of the tool page, select Collect, add tool to `Collection`. A
 
 Let's take a look at what information is needed to be filled in to complete the creation of the task!
 
-When creating a task, the first step is to choose the run mode:
+When creating a task, the first step is to choose the Method of invocation:
 
 - Quick Mode: No code knowledge is required, and the detection can be enabled with one click by directly entering parameters on the web page.
 - Customized Mode: 100% of the tool capabilities can be exerted, with a high degree of freedom, which is convenient for debugging and use for advanced users.
 
 #### 2.3.1 Quick Mode 
 
-First, choose the simple mode, make the Method of invocation remain default(that is, Quick Mode), then fill in the parameters required by the task and submit it.
+We take nmap as an example.
+
+First, choose the nmap typical invocation, make the Method of invocation remain default(that is, Quick Mode), then fill in the parameters required by the task and submit it.
 
 In this mode, one detection demands only some basic taget information.
 
@@ -480,7 +479,7 @@ Now we have learned the Quick Mode Invocation, but the actual situation of penet
 
 In this chapter，we will learn how to conduct a customized invocation of tools.
 
-Here we choose xsstrike to detect the xss vulnerabilities of the website. Because some websites often need to carry cookies for access, it is necessary to use the raw mode to add the cookie field.
+Here we use nmap to perform a customized scan on an IP.
 
 At first, enter the `New task` page.
 
@@ -488,21 +487,17 @@ On this page, choose Raw Mode, and make the Method of invocation remain default(
 
 ![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/be280f8d-1a0c-4bf5-bf02-fe4ee5a725c9.JPEG)
 
-The use of the tool command and of the command line is exactly the same, the only difference is that the cli parameter is a list. The only thing we have to do is to upload the input command in the form of a list into the cli parameter.
+The use of the tool command and of the command line is exactly the same, the only difference is that the argv parameter is a list. The only thing we have to do is to upload the input command in the form of a list into the argv parameter.
 
 If you want to learn about the parameters and commands of one specific tool, you can move to the official detail document of this tool.
 
-For example, we want to conduct xss detection on a URL, but this URL requires cookie access. Xsstrike specifies the flag of the url as `-u` and the flag of the http request header as`—-headers`. Then we need xsstrike to run in no confirmation and interactive mode as `--skip`, so our command line request is as follows:
+For example, we want to scan an IP here, so our command line request is:
 
 ```Bash
-xsstrike -u "http://xxxx.app.mituan.zone/vulnerabilities/xss_r/?name=1#" --headers "Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low" --skip
+nmap -T4 -A -v -Pn IP    
 ```
 
 As element interval, spaces can be converted to a list as shown below:
-
-```Bash
-cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilities/xss_r/?name=1#", "--headers","Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low","--skip"]
-```
 
 ![image_10.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/bdb7143f-2a95-4735-b867-89763e615798.JPEG)
 
@@ -510,7 +505,7 @@ Then submit it.
 
 ### 2.4 View Results
 
-After the execution of the task, click `Run result` to view the running result of the task, then a simple tool invocation has been completed.
+After the execution of the task, click `Result` to view the running result of the task, then a simple tool invocation has been completed.
 
 ![image_11.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2eb75d26-4fd7-4073-b538-f161fdc7a3be.JPEG)
 
