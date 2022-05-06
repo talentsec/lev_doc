@@ -498,34 +498,29 @@ INFO:root:Agent is ready
 
 本章教给大家如何使用原生模式对工具进行自定义调用。
 
-这边我选择xsstrike对网站进行xss漏洞检测，因为一些网站常常需要携带cookie访问，因此需要使用原生模式加入cookie字段。
+这边我选择 nmap 对某个 IP 进行自定义扫描。
 
 首先，进入添加任务界面。
 
 在添加任务界面，选择模式为raw原生模式，调用方式保持默认（即自定义模式），保持不变。
 
-![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4ebf3832-7b5c-45c4-af0e-e783b9a98a9e.png)
+![nmap_raw.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/5df63e26-2ca2-424b-aa62-ba9ace3de66e.JPEG)
 
-工具命令和命令行使用是完全一致的，唯一不同的是cli参数是一个列表，我们唯一要做的就是将输入的命令用列表的方式传入cli参数。
+工具命令和命令行使用是完全一致的，唯一不同的是 argv 参数是一个列表，我们唯一要做的就是将输入的命令用列表的方式传入 argv 参数。
 
 具体工具有哪些参数和命令，可以移步此工具的官方文档。
 
-例如，我这边想对一个URL进行xss探测，但这个url需要cookie访问。xsstrike指定url的flag为`-u`，指定http请求头的flag为`—-headers`，然后我们需要xsstrike在无需确认和交互的模式下运行选项为`—-skip`，于是我们的命令行请求为：
+例如，我这边想对一个 IP 进行扫描，于是我们的命令行请求为：
 
 ```Bash
-xsstrike -u "http://xxxx.app.mituan.zone/vulnerabilities/xss_r/?name=1#" --headers "Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low" --skip
+nmap -T4 -A -v -Pn IP	
 ```
 
 
 空格为元素间隔，转换成列表为下面所示：
 
-```Bash
-cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilities/xss_r/?name=1#", "--headers","Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low","--skip"]
 
-```
-
-
-![image_10.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/cd49c205-6e13-4b50-8c5f-39bbbe3f54ab.png)
+![nmap_command.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/1f1d2acf-b581-48ad-befb-5017b0d96b24.JPEG)
 
 之后提交即可。
 
@@ -533,21 +528,19 @@ cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilit
 
 任务执行完毕之后，我们点击`运行结果`按钮查看任务的运行结果，这样就完成了一次简单的工具调用。
 
-![image_11.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4d2d5b55-132a-4520-966f-40710c32e975.png)
+![result_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2535037b-300d-41a5-810d-73ff5f0eb967.JPEG)
 
 ### 2.5 调试
 
 任务运行过程中有可能会产生一些预期之外的错误，大多数是输入参数引起的，例如目标无法访问，或者只是单纯地打错URL。那我们如何如何对进行调试呢？
 
-![image_12.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/c036186f-3f36-4808-8d48-c2fd68ace522.png)
+![debug_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/9502f37b-9b37-4418-bb3f-2699c72f9260.JPEG)
 
 这里可以看到任务正在运行，首先可以在日志按钮里查看任务日志，以查看任务运行情况。
 
-![image_13.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/54f69ed2-27a6-4a23-96bf-1f18aa04a97b.png)
-
 如果日志并不能直接确定或者解决问题，可以选择调试按钮。
 
-![image_14.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e5d315ac-9a61-48a4-8bca-cf4320e44af2.png)
+![debug_command_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3ace06ff-a2a8-4d32-b424-92b5240f936b.JPEG)
 
 平台会给出一条调试命令，我们将这条命令复制入环境的命令行进行执行，可以进入容器内部的调试命令行。
 
