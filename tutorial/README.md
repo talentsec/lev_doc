@@ -226,8 +226,6 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 
 #### 1.  Install docker
 
-​		 Please use Chinese sources, otherwise the speed will be very slow.
-
 ​		Ubuntu:	[reference documentation](https://docs.docker.com/engine/install/ubuntu/)
 
 ​		CentOS:	[reference documentation](https://docs.docker.com/engine/install/centos/)
