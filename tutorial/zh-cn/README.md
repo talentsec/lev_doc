@@ -64,11 +64,11 @@ del hyper-v.txt
 Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL 
 ```
 
-​				将文档另存为install-hyper-v.cmd，右键点击 管理员运行
+​				将文档另存为install-hyper-v.cmd，右键点击 管理员运行：
 
 ![安装hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)		
 
-​			安装完毕后输入Y，重启（注意：**如果安装完毕之后更新系统，有可能造成安装无效，需要检查，有必要的话需要重新安装hyper-v**）。​			
+​			安装完毕后输入Y，重启（注意：**如果安装完毕之后更新系统，有可能造成安装无效，需要检查，有必要的话需要重新安装hyper-v**）。			
 
 ​			重复上述步骤，将如下代码另存为change.cmd并以管理员身份运行：
 
@@ -92,7 +92,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 - 重启之后，点击docker桌面客户端图标，**Windows**下docker有图形化界面：
 
-​			图形化界面左下角docker引擎标识呈绿色则成功启动
+​			图形化界面左下角docker引擎标识呈绿色则成功启动。
 
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
@@ -172,7 +172,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，请检查ssh公钥和用户名是否正确。
    ```
 
-   如果上述流程显示错误，也可以直接输入下列命令行  
+   如果上述流程显示错误，也可以直接输入下列命令行  ：
    
    ```ssh username@service.lev.zone -p 2222```（username替换成潮汐平台用户名，非邮箱账号！）
 
@@ -201,7 +201,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e46b4413-d432-4817-89c3-6abd73b645e8.png)
    
-   粘贴以下代码
+   粘贴以下代码：
 
    ```Bash
      "registry-mirrors": [
@@ -327,7 +327,7 @@ INFO:root:Agent is ready
 
 #### 生成ssh公钥
 
-在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件
+在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件。
 
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
 
@@ -505,7 +505,7 @@ INFO:root:Agent is ready
 nmap -T4 -A -v -Pn IP	
 ```
 
-空格为元素间隔，转换成列表为下面所示：
+空格为元素间隔，转换成列表，如下所示：
 
 ![nmap_command.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/1f1d2acf-b581-48ad-befb-5017b0d96b24.JPEG)
 
@@ -519,7 +519,7 @@ nmap -T4 -A -v -Pn IP
 
 ### 2.5 调试
 
-任务运行过程中有可能会产生一些预期之外的错误，大多数是输入参数引起的，例如目标无法访问，或者只是单纯地打错URL。那我们如何如何对进行调试呢？
+任务运行过程中有可能会产生一些预期之外的错误，大多数是输入参数引起的，例如目标无法访问，或者只是单纯地打错URL。那我们如何对进行调试呢？
 
 ![debug_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/9502f37b-9b37-4418-bb3f-2699c72f9260.JPEG)
 
