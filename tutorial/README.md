@@ -32,7 +32,7 @@ The specific usage of different operating system environments is different. This
 
 #### 	1.1  Preliminary Environment Installation (Install Docker)
 
-Pre-knowledge: [what is docker](https://www.redhat.com/zh/topics/containers/what-is-docker)
+Pre-knowledge: [what is docker](https://www.redhat.com/en/topics/containers/what-is-docker)
 
  If Docker has been installed on your device, please check its version number. Leviathan supports 20.10.10 and above. If the condition is met, you can skip this step, otherwise, please install or update Docker as follows.
  
@@ -52,7 +52,7 @@ First, you need to enable the hyper-v module. The Windows Home Edition cannot qu
 
 Update the operating system to the latest version, Windows Settings -> Update -> Check for updates
 
-Enable the display of file extensions. For details, [refer to File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+Enable the display of file extensions. For details, [refer to File Extension Display](https://fileinfo.com/help/windows_10_show_file_extensions)
 
 Copy the following code into a new document:
 
@@ -82,7 +82,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
  The following steps should and must be performed on all Windows systems.
 
- Enable the display of file extensions. For details, refer to [File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+ Enable the display of file extensions. For details, refer to [File Extension Display](https://fileinfo.com/help/windows_10_show_file_extensions)
 
 [Download the docker installation file](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe).
 
@@ -105,7 +105,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3e4dd10e-3021-4647-a9e4-09877140b6f6.png)
 
 ​	If the content shown above does not appear, please refer to the following document to install the ssh command: Install ssh.
-​	[Install ssh](https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse)
+​	[Install ssh](https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
 
 ​	Then enter the command:	``` cd ~```
 
