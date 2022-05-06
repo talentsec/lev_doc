@@ -550,7 +550,7 @@ After the execution of the task, click `Run result` to view the running result o
 
 Unexpected errors may occur during the task execution, most of which are caused by input parameters, such as the target inaccessible, or simply the wrong URL. So how do we debug it?
 
-![image_12.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/efc3a8d5-6d97-4b3a-b2b7-803e94136411.JPEG)
+![debug](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/efc3a8d5-6d97-4b3a-b2b7-803e94136411.JPEG)
 
 Here you can see that the task is running. First, you can view the task log by clicking the Log button to view the running status of the task.
 
