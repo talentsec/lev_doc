@@ -503,7 +503,7 @@ When creating a task, the first step is to select the run mode:
 
 Firstly, select the Quick mode, make the invocation method remain default, and then fill in the parameters required by the task and submit it.
 
-In this mode, one detection demands only some basic taget information.
+In this mode, one detection demands only some basic target information.
 
 ![image_7.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2d6c5bff-8d80-4b93-a18f-dc107b05080d.png)
 

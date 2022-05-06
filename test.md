@@ -104,7 +104,7 @@ $ docker ps -a
 输入打印日志的命令查看最终结果：
 
 ```bash
-# 6d52 为上图 docker 实例的 ID 简写，也可以用 image 名称: "alpine:lastest"
+# 6d52 为上图 docker 实例的 ID 简写，也可以用 image 名称: "alpine:latest"
 $ sudo docker logs -f 6d52 
 hello,world
 ```
