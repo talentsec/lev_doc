@@ -30,7 +30,7 @@
 
 ​			前置知识：[什么是docker](https://www.redhat.com/zh/topics/containers/what-is-docker)
 
-​			如果你的设备上已经安装过docker，请检查其版本号，潮汐支持的版本号不低于**20.10.10**，否则请进行更新，且可以跳过此步骤。
+​			如果你的设备上已经安装过docker，请检查其版本号，潮汐支持的版本号不低于**20.10.10**，如果满足条件，可以跳过此步骤，否则请进行更新。
 
 ​			Windows系统安装docker比较麻烦，需要先开启Windows系统内置的hyper-v功能，建议使用Linux系统或者WSL，方便快捷，以下教程以Win10为示例，且按照Win10系统版本划分(如果不知道自己Win10系统版本，请百度)。
 
@@ -96,7 +96,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			点击文件开始安装docker（家庭版需要在安装时取消勾选Windows容器WSL2那个选项，其他版本不需要）
 
-​			等待安装成功重启。重启之后，打开docker桌面客户端图标，**Windows**下docker有图形化界面：
+​			等待安装成功重启。重启之后，点击docker桌面客户端图标，**Windows**下docker有图形化界面：
 
 ​			图形化界面左下角docker引擎标识呈绿色则成功启动![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
@@ -108,7 +108,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​	1. 打开powershell，以管理员身份运行：
 
-​		![打开powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3d52434b-96e6-445c-9d0f-2d786f09cd4b.png)"
+​		![打开powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3d52434b-96e6-445c-9d0f-2d786f09cd4b.png)
 
 
 
@@ -131,7 +131,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​		```ssh-keygen.exe -t ed25519```
 
-会提示输入，不用管，按Enter键一路到底就好，直到出现如下提示：
+会提示输入，不用管，按Enter键一路到底就好，直到出现如下提示即为完成(注：不建议使用默认的rsa加密方法生成密钥，高版本的openssh中会默认禁用rsa密钥)：
 
 ```vbscript
 +---[ed25519 256]----+
@@ -147,12 +147,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 +----[SHA256]-----+
 ```
 
-即为完成(注：不建议使用默认的rsa加密方法生成密钥，高版本的openssh中会默认禁用rsa密钥)。
 此时再次输入`ls ~/.ssh`，就会显示文件上面提到的两个文件：
 
 ![密钥.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/38c66c66-6a58-4609-800a-032a13f0c3c8.JPEG)
 
-3. 输入`cat ~/.ssh/id_ed25519.pub`命令，查看文件内容，复制输出的内容(powershell不可以直接右键复制，需要特殊操作，详情百度)。
+3. 输入`cat ~/.ssh/id_ed25519.pub`命令，查看文件内容，复制输出的内容（powershell不可以直接右键复制，需要特殊操作，详情百度）。
    如果实在不会复制，那么也可以通过文件浏览器打开id_ed25519.pub文件，该文件路径为`C盘\用户\(当前用户名)\.ssh\`，复制内容。
 
 4. 登录潮汐安全平台，在`账户设置`—`公钥管理`中，选择上传ssh公钥，名称随意输入，并将上述步骤复制的文件内容添加入至公钥中即可。
@@ -332,7 +331,7 @@ INFO:root:Agent is ready
 
 #### 生成ssh公钥
 
-在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519、id_ed25519.pub"文件![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
+在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
 如没有，则在命令行输入下列命令来生成：
 
 ```
@@ -446,7 +445,7 @@ INFO:root:Agent is ready
 ![image_4.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/7d1add24-d3d1-4f65-808f-a28fe95b9163.png)
 
 - 基本信息
-  此模块简单描述工具的作用和版本。主要描述工具的借口使用说明，例如此工具的direct模式只需要输入url参数，类型为str字符串。
+  此模块简单描述工具的作用和版本。主要描述工具的接口使用说明，例如采取快速模式运行此工具，只需要输入url参数，类型为str字符串。
 - 源码文件
   这里可以直接查看工具的调用源码，用作学习和研究。
 - 交流面板
@@ -481,9 +480,9 @@ INFO:root:Agent is ready
 - 快速模式：无需代码知识，直接在网页输入参数即可一键启动检测。
 - 高级模式：可以发挥100%的工具能力，高自由度，方便调试和进阶用户使用。
 
-#### 2.3.1 快速模式调用
+#### 2.3.1 快速模式
 
-模式选择simple快速使用模式，调用方式保持默认，然后填入任务所需要的参数，提交即可。
+选择simple快速使用模式，调用方式保持默认（即快速模式），然后填入任务所需要的参数，提交即可。
 
 简单的调用仅仅只需要填入基础的目标信息，就可以完成一次检测。
 
@@ -493,17 +492,17 @@ INFO:root:Agent is ready
 
 ![image_8.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/103afcb5-1282-4e78-93ac-91a87e82ab9e.png)
 
-#### 2.3.2 原生模式使用
+#### 2.3.2 自定义模式
 
 现在我们学会了简单的调用，但是渗透测试实战情况瞬息万变，如何才能发挥工具的最强性能呢？
 
-本章教给大家如何使用原生模式对工具进行高级调用。
+本章教给大家如何使用原生模式对工具进行自定义调用。
 
 这边我选择xsstrike对网站进行xss漏洞检测，因为一些网站常常需要携带cookie访问，因此需要使用原生模式加入cookie字段。
 
-简单模式一样的，首先进入添加任务界面。
+首先，进入添加任务界面。
 
-在添加任务界面，选择模式为raw原生模式，raw原生模式默认为高级调用，保持不变。
+在添加任务界面，选择模式为raw原生模式，调用方式保持默认（即自定义模式），保持不变。
 
 ![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4ebf3832-7b5c-45c4-af0e-e783b9a98a9e.png)
 
@@ -511,7 +510,7 @@ INFO:root:Agent is ready
 
 具体工具有哪些参数和命令，可以移步此工具的官方文档。
 
-例如，我这边想对一个URL进行xss探测，但这个url需要cookie访问。xsstrike指定url的flag为`-u`，指定http请求头的flag为`—-headers`，然后我们需要xsstrike在无需确认和交互模式下运行选项为`—-skip`，于是我们的命令行请求为：
+例如，我这边想对一个URL进行xss探测，但这个url需要cookie访问。xsstrike指定url的flag为`-u`，指定http请求头的flag为`—-headers`，然后我们需要xsstrike在无需确认和交互的模式下运行选项为`—-skip`，于是我们的命令行请求为：
 
 ```Bash
 xsstrike -u "http://xxxx.app.mituan.zone/vulnerabilities/xss_r/?name=1#" --headers "Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low" --skip
