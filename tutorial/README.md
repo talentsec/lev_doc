@@ -4,7 +4,9 @@ Welcome to Leviathan, where you can easily call all the security tools and workf
 
 In this document, we mainly teach you how to use tools and workflows on Leviathan. If you are interested in uploading tools or workflows, please move to the [development document](https://lev.zone/docs/).
 
-Different from the traditional online security tool integration platform, Leviathan achieves the separation of the distribution and the run of the task architecturally. **①The invocation and run of tools；②the production and storage of data, all rely on the user's private local environment. It does not go through Leviathan cloud server, thus ensuring the data security and privacy security of every security personnel**. In addition, Leviathan can enable the tools and detection tasks with one click, and without the download/deployment/update of the tools or any code!
+Different from the traditional online security tool integration platform, Leviathan achieves the separation of the distribution and the run of the task architecturally. **①The invocation and run of tools；②the production and storage of data, all rely on the user's private local environment. It does not go through Leviathan cloud server, thus ensuring the data security and privacy security of every security personnel**. 
+
+In addition, Leviathan can enable the tools and detection tasks with one click, and without the download/deployment/update of the tools or any code!
 
 Next, let's take a look at how to use Leviathan!
 
@@ -12,12 +14,15 @@ Next, let's take a look at how to use Leviathan!
 
 ## Overview
 
-First of all, in order to run the tools and workflows normally on Leviathan, you need to complete the configuration and setup of the local environment. There are 3 steps, namely: preliminary environment installation, credential uploading and acquisition, and startup of the environment. The specific usage of different operating system environments is different. This manual is divided into the installation and configuration of three operating system environments: Windows, Linux and Mac. And they all follow the following three steps:
+First of all, in order to run the tools and workflows normally on Leviathan, you need to complete the configuration and setup of the local environment. 
+
+There are 3 steps, namely: preliminary environment installation, credential uploading and acquisition, and startup of the environment. 
+
+The specific usage of different operating system environments is different. This manual is divided into the installation and configuration of three operating system environments: Windows, Linux and Mac. And they all follow the following three steps:
 
 - Preliminary environment installation (Install Docker)
 - Credential uploading and acquisition
 - Environment startup
-
 
 
 
@@ -33,15 +38,11 @@ Pre-knowledge: [what is docker](https://www.redhat.com/zh/topics/containers/what
  
  Docker installation on Windows is complicated. Firstly, you need to enable the built-in 'hyper-v' function on Windows (therefore, it is recommended to use Linux system or WSL instead of Windows). The following tutorial takes Win10 as an example, and explains differences when using differnet Win10 system Edition (If you don't know your system Edition, feel free to google it).
 
-
-
 ##### 1.1.1 Enable CPU virtualization support
 
  Enter the BIOS settings in system and check whether the BIOS has enabled CPU virtualization support as below.
 
  ![Enable virtualization support.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2e12d9cd-cf65-4c6c-88a2-1b6d42110f22.JPEG)
-
-
 
 ##### 1.1.2 Win10 Home Edition Pre-step
 
@@ -54,7 +55,6 @@ Update the operating system to the latest version, Windows Settings -> Update ->
 Enable the display of file extensions. For details, [refer to File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
 Copy the following code into a new document:
-
 
 ```
 pushd "%~dp0"
@@ -70,14 +70,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
  After the installation is completed, enter Y and restart. (Note: **If the system is updated after the installation has been completed, it may cause the installation to be invalid, you need to check, and if necessary, you need to reinstall hyper-v**)
 
-
  Repeat the above steps, save the following code as change.cmd and run as administrator.
 
  `REG ADD "HKEY_LOCAL_MACHINE\software\Microsoft\Windows NT\CurrentVersion" /v EditionId /T REG_EXPAND_SZ /d Professional /F`
 
  Now, the Win10 Home Ediiton hyper-v should be enabled.
-
-
 
 ##### 1.1.3 Win10 Professional Edition, Enterprise Edition, Education Edition
 
@@ -85,10 +82,9 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
  The following steps should and must be performed on all Windows systems.
 
-
  Enable the display of file extensions. For details, refer to [File Extension Display](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
- Download the docker installation file. [docker installer download](https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header)
+ [Download the docker installation file](https://desktop.docker.com/win/main/amd64/Docker Desktop Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header).
 
  Click the file to install docker (the Home Edition requires that Windows Container WSL2 should be unchecked during the installation; This step is not needed in other Win Editions).
 
@@ -97,24 +93,21 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
  When the Docker Logo on the lower left corner is green, it means you have successfully launched Docker![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
  If it displays that docker fails to launch and reports the error **"Hyper-V component is not running"**, it means that hardware virtualization has not been started. Please perform the first step: **1.1.1 Enable CPU virtualization support**.
-
-
+ 
 #### 1.2 Credential uploading and acquisition
 
 ​	1.	Open PowerShell and run as administrator:
 
 ​		![open powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/ae0c173f-92ee-455f-88bf-87ece5ca95bb.JPEG)
 
-​	Enter ssh, line feed, and check whether the system has the ssh command installed:			
+​	Enter ssh, line feed, and check whether the system has the ssh command installed:		
 
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3e4dd10e-3021-4647-a9e4-09877140b6f6.png)
 
 ​	If the content shown above does not appear, please refer to the following document to install the ssh command: Install ssh.
 ​	[Install ssh](https://docs.microsoft.com/zh-cn/windows-server/administration/openssh/openssh_install_firstuse)
 
-​	Then enter the command:
-
-​		``` cd ~```
+​	Then enter the command:	``` cd ~```
 
 ​	2.	Enter the current user's home directory with the command above, and then enter the ``` ls .ssh```command to check whether the ssh key exists, namely the two files  "id_ed25519" 、"id_ed25519.pub" :
 
@@ -142,13 +135,12 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 
 ​	After that, you enter  `ls .ssh` again, the two files mentioned above will be displayed:
 
-![ssh key.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/38c66c66-6a58-4609-800a-032a13f0c3c8.JPEG)
-
+![ssh key.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/d0e95ec6-b907-4f19-80fc-4d43256b2b72.JPEG)
 
 3. Enter the command`cat ~/.ssh/id_ed25519.pub` to view the contents of the file, and copy the it. (It cannot be copied directly by right-click in PowerShell, and the copy requires special operations, please feel free to google it.) 
+
    If you really can't copy, you can also open the id_ed25519.pub file through the file browser(the file path is `C Disk\User\(Current User’s Name)\.ssh\)`, then copy it.
   
-
 4. Log in to Leviathan, in `Account settings` - `Public key management`, choose to upload the ssh public key, enter the name at will, and add the content of the file copied in the steps above to the public key. 
 
 5. Under the path of the third step, the file path is `C Disk\User\(Current User’s Name)\.ssh\`, create `New text document.txt`, open it, then copy and add the following content, save it:
@@ -174,11 +166,10 @@ You will be prompted to input, please ignore it, just press the Enter key all th
    ```Bash
    $ ssh lev
    Permission denied (publickey). # This message indicates that the ssh public key is incorrectly configured, please check whether the ssh public key and username are correct.
-   
    ```
 
    If the process above shows an error, you can also directly enter the following command line:  
-   ```ssh username@service.lev.zone -p 2222 （the username is your Leviathan username，not email!）``` 
+   ```ssh username@service.lev.zone -p 2222```（the username is your Leviathan username，not email!）
 
    The following statement appears:
    ```Are you sure you want to continue connecting (yes/no/[fingerprint])? ``` enter yes immediately and press Enter. Please do not wait too long, otherwise the startup may fail.
@@ -221,7 +212,6 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 
    After completing the acceleration operations above, execute the following command again to launch the local environment:
 
-
    ```bash
    $ ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
    # The following statement appears: Are you sure you want to continue connecting (yes/no/[fingerprint])? enter yes immediately and press Enter. Please do not wait too long, otherwise the startup may fail.
@@ -230,8 +220,7 @@ You will be prompted to input, please ignore it, just press the Enter key all th
    ```
 
    Finally, in [Account Settings - My Device], you can see that the device is online! 
-   Go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
-​	
+   
 
 ### Linux
 
@@ -244,7 +233,6 @@ You will be prompted to input, please ignore it, just press the Enter key all th
 ​		CentOS:	[reference documentation](https://docs.docker.com/engine/install/centos/)
 
 ​		Debian:	[reference documentation](https://docs.docker.com/engine/install/debian/)
-​		  
 
 #### 2. Generate ssh key
 
@@ -261,10 +249,10 @@ $ ssh-keygen -t ecdsa -C "youremail@example.com"
 
 Log in to Leviathan, in `Account settings` - `Public key management`, choose to upload the ssh public key, enter the name at will, and copy the content of the id_ed25519.pub public key file in the .ssh folder generated in the steps above to the public key. 
 
-
 #### 4.Configure the ssh config file
 
 `touch ~/.ssh/config`
+
  Write as follows:
 
 ```bash
@@ -289,7 +277,7 @@ Permission denied (publickey). # If this message displays, the ssh public key is
 ```
 
 If the process above shows an error, you can also directly enter the following command: 
-```ssh username@service.lev.zone -p 2222 （Leviathan username）``` 
+```ssh username@service.lev.zone -p 2222```（the username is your Leviathan username，not email!）
 
 The following statement appears: 
 ```Are you sure you want to continue connecting (yes/no/[fingerprint])? ``` enter yes immediately and press Enter. Do not wait too long, otherwise the startup may fail.
@@ -299,7 +287,6 @@ The following statement appears:
 First, add a device on the [Account Settings - My Device] page, enter a name, and click Submit.
 
 Next, execute the following command to launch the local environment (if the pull speed is slow, it is recommended to modify the image source of docker to that of the University of Science and Technology of China):
-
 
 ```bash
 $ ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
@@ -311,9 +298,9 @@ INFO:root:Agent is ready
 After the command is executed, the image container will be automatically pulled and launched, and the whole process may last for a few minutes. When the containers are all launched, everything is ready!
 
 Finally, in [Account Settings - My Device], you can see that the device is online!  
-![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/64c575b9-3ea3-494c-b25c-191835f2ba78.png)
+![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/f947afbe-93f3-4764-a97f-df67cbc4b14a.JPEG)
 
-Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! Go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0).
+Next, let's take a look at how to use Leviathan to run tools/workflows for asset security detection! 
 
 
 
@@ -326,13 +313,14 @@ If Docker has been installed on your device, please check its version number. Le
 Download the [docker installation file](https://docs.docker.com/get-docker/)
 
 Click the file to launch docker. Open Docker by clicking the Desktop icon. Docker has a graphical interface under **Mac**.
+
 When the Docker Logo on the lower left corner is green, it means you have successfully launched Docker.![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
 #### Generate ssh public key
 
 Open the folder (Finder) under Mac, press the combination of `shift`+`command`+`G`, the following pop-up Windows will appear, enter `~/.ssh` . Enter the .ssh directory, and check whether there are "id_ed25519"、"id_ed25519.pub" files.
 
-![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
+![go_to_folder.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/01912358-ec54-41a7-9aa8-527a525ecbc0.JPEG)
 
 If not, enter the following command:
 
@@ -372,7 +360,6 @@ $ ssh lev
 Connection to service.lev.zone closed. # Successful
 ```
 
-
 If the following message is returned, there is a problem with the configuration file, please check the previous configuration steps:
 
 ```Bash
@@ -383,18 +370,16 @@ Permission denied (publickey). # This message indicates that the ssh public key 
 
 If the process above shows an error, you can also directly enter the following command: 
  
-```ssh username@service.lev.zone -p 2222 （Leviathan username）``` 
+```ssh username@service.lev.zone -p 2222```（the username is your Leviathan username，not email!）
 
 The following statement appears:
 ```Are you sure you want to continue connecting (yes/no/[fingerprint])? ``` enter yes and press Enter immediately, do not wait too long, otherwise the startup may fail.
-
 
 #### Launch
 
 First, add a device on the [Account Settings - My Device] page, enter a name, and click Submit.
 
 Next, execute the following command to launch the local environment(If the pull speed is slow, it is recommended to modify the image source of docker to that of the University of Science and Technology of China，feel free to google it): 
-
 
 ```bash
 $ ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
@@ -403,15 +388,7 @@ INFO:root:Agent is ready
 # Successful
 ```
 
-After the command is executed, the image container will be automatically pulled and launched, and the whole process may last for a few minutes. When the containers are all launched, everything is ready! Then go to the [next step](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
-
-
-
-
-
-
-
-
+After the command is executed, the image container will be automatically pulled and launched, and the whole process may last for a few minutes. When the containers are all launched, everything is ready! 
 
 
 
@@ -419,8 +396,7 @@ After the command is executed, the image container will be automatically pulled 
 
 Log in to Leviathan, you can then see a total of 6 items in the directory bar.
 
-![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/18e05be5-ed18-4903-9b20-4c48d5c28b30.png)
-
+![header.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/552b148e-90e4-4173-8806-6bbab6217ce8.JPEG)
 
 - Task: Detection tasks I have run
 - Collection: My favorite tools/workflows/authors
@@ -429,26 +405,25 @@ Log in to Leviathan, you can then see a total of 6 items in the directory bar.
 - Forum: A place to communicate
 - Document: Usage documents and development documents
 
-
 ### 2.1 Choose a tutorial
 
 If this is your first time to Leviathan, you may not know where to start, or what tools should be experienced firstly, you can go to the Forum. According to the official penetration tutorial 1-4, you can easily complete a web penetration test on Leviathan! 
 
-![image_1.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/0c5d1e0b-6024-41d6-a742-c6b4aa87e502.png)
+![image_1.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/a6b43e3e-9a12-42e4-bb35-51f8cc8df13e.JPEG)
 
 ### 2.2 Select tools
 
 If you have a specific tool to use, you can find the relevant tools or workflows in the Market, and run the task directly.
 
-![image_2.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/dd7c358b-2b01-440e-852d-d49fdab60c27.png)
+![image_2.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/f6fac1d4-508d-4254-9b4d-9b11b271afd0.png)
 
 Find the tool you want to use and go to the tool detail page.
 
-![image_3.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/098fd6cb-5afb-4348-bffb-c951577b372f.png)
+![image_3.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/95fa22c3-f026-4f15-9e17-b42d0316bdf7.JPEG)
 
 The tool page is divided into the following four modules:
 
-![image_4.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/7d1add24-d3d1-4f65-808f-a28fe95b9163.png)
+![image_4.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/27ced2ad-f6e9-4f02-8a69-5c502e543133.JPEG)
 
 - Basic Information:
   It briefly describes the function and version of the tool. It mainly describes how to use the tool.For example, to run the tool in Quick Mode, you only need to enter the url parameter, which is a str string.
@@ -462,7 +437,6 @@ The tool page is divided into the following four modules:
 - Running Log:
   You can view the invocation log of the tool.
 
-
 ---
 
 You can create a task after you find the tool you want to run!
@@ -471,14 +445,13 @@ You can create a task after you find the tool you want to run!
 
 Click directly `Create new task` on the upper right of the tool page to quickly enter the invocation interface of the tool.
 
-![image_5.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/b57a17db-c6af-4095-8799-0d1f922bf5bf.png)
+![header_nmap.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/16eb4d67-9c99-41ee-9bca-0f1e4b6e0d8f.JPEG)
 
 #### 2.2.2 Method 2: Collect tools/workflows and create tasks
 
 On the upper right of the tool page, select Collect, add tool to `Collection`. After that, you can view the tool and create new tasks in `Collection` page.
 
-![image_6.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/37a60e4f-ba39-490d-aa75-25ca6511019b.png)
-
+![image_6.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/1c5679a5-7df0-48be-859c-593de707c9ce.JPEG)
 
 ### 2.3 Create the first task
 
@@ -488,7 +461,6 @@ When creating a task, the first step is to choose the run mode:
 
 - Quick Mode: No code knowledge is required, and the detection can be enabled with one click by directly entering parameters on the web page.
 - Customized Mode: 100% of the tool capabilities can be exerted, with a high degree of freedom, which is convenient for debugging and use for advanced users.
-
 
 #### 2.3.1 Quick Mode 
 
@@ -514,7 +486,6 @@ At first, enter the `New task` page.
 
 On this page, choose Raw Mode, and make the Method of invocation remain default(that is, Customized Mode).
 
-
 ![image_9.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/be280f8d-1a0c-4bf5-bf02-fe4ee5a725c9.JPEG)
 
 The use of the tool command and of the command line is exactly the same, the only difference is that the cli parameter is a list. The only thing we have to do is to upload the input command in the form of a list into the cli parameter.
@@ -523,17 +494,14 @@ If you want to learn about the parameters and commands of one specific tool, you
 
 For example, we want to conduct xss detection on a URL, but this URL requires cookie access. Xsstrike specifies the flag of the url as `-u` and the flag of the http request header as`—-headers`. Then we need xsstrike to run in no confirmation and interactive mode as `--skip`, so our command line request is as follows:
 
-
 ```Bash
 xsstrike -u "http://xxxx.app.mituan.zone/vulnerabilities/xss_r/?name=1#" --headers "Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low" --skip
 ```
-
 
 As element interval, spaces can be converted to a list as shown below:
 
 ```Bash
 cli=["-u", "http://2325af11816b4bccb9caf11baac437ab.app.mituan.zone/vulnerabilities/xss_r/?name=1#", "--headers","Cookie: PHPSESSID=kpq9sje3nufjree77pcmosgia3; security=low","--skip"]
-
 ```
 
 ![image_10.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/bdb7143f-2a95-4735-b867-89763e615798.JPEG)
@@ -556,7 +524,7 @@ Here you can see that the task is running. First, you can view the task log by c
 
 If the log cannot be used to directly identify or solve the problem, select the Debug button.
 
-![debug_en](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/efc3a8d5-6d97-4b3a-b2b7-803e94136411.JPEG)
+![debug_en](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4dd15574-2cfd-403d-92d9-2c661f26a24b.JPEG)
 
 The platform will give a debug command. We copy it into the command line of the environment for execution, and we can enter the debug command line inside the container.
 
