@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Tutorial</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description"/>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
     />
     <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     />
 
     <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
+            rel="stylesheet"
+            href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
     />
 
     <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -24,21 +24,25 @@
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" /> -->
 
     <style>
-      :root {
-        --docsifytabs-border-color: #ededed;
-        --docsifytabs-tab-highlight-color: purple;
-      }
+        :root {
+            --docsifytabs-border-color: #ededed;
+            --docsifytabs-tab-highlight-color: purple;
+        }
     </style>
-  </head>
-  <body>
-    <div id="app">Loading ...</div>
-    <script>
-      function getLang() {
+</head>
+<body>
+<div id="app">Loading ...</div>
+<script>
+    function getLang() {
         return "/" + location.hash.slice(2).split("/")[0];
-      }
-      var num = 0;
-      mermaid.initialize({ startOnLoad: false });
-      window.$docsify = {
+    }
+
+    var num = 0;
+    mermaid.initialize({startOnLoad: false});
+    window.$docsify = {
+        requestHeaders: {
+            'cache-control': 'max-age=0'
+        },
         mergeNavbar: true,
         logo: "/_media/icon.svg",
         auto2top: true,
@@ -46,8 +50,8 @@
         themeColor: "purple",
         loadNavbar: true,
         loadSidebar: true,
-          subMaxLevel: 0,
-          // coverpage: ["/", "/zh-cn/"],
+        subMaxLevel: 0,
+        // coverpage: ["/", "/zh-cn/"],
         onlyCover: false,
         // name: {
         //   "/": "Documentation",
@@ -55,97 +59,97 @@
         // }[getLang()],
         // complete configuration parameters
         search: {
-          maxAge: 86400000, // Expiration time, the default one day
-          paths: "auto", // or 'auto'
+            maxAge: 86400000, // Expiration time, the default one day
+            paths: "auto", // or 'auto'
 
-          placeholder: {
-            "/zh-cn/": "搜索",
-            "/": "Type to search",
-          },
+            placeholder: {
+                "/zh-cn/": "搜索",
+                "/": "Type to search",
+            },
 
-          noData: {
-            "/zh-cn/": "找不到结果",
-            "/": "No Results",
-          },
+            noData: {
+                "/zh-cn/": "找不到结果",
+                "/": "No Results",
+            },
 
-          // Headline depth, 1 - 6
-          depth: 2,
+            // Headline depth, 1 - 6
+            depth: 2,
 
-          hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+            hideOtherSidebarContent: false, // whether or not to hide other sidebar content
 
-          // To avoid search index collision
-          // between multiple websites under the same domain
-          namespace: "website-1",
+            // To avoid search index collision
+            // between multiple websites under the same domain
+            namespace: "website-1",
 
-          // Use different indexes for path prefixes (namespaces).
-          // NOTE: Only works in 'auto' mode.
-          //
-          // When initialiazing an index, we look for the first path from the sidebar.
-          // If it matches the prefix from the list, we switch to the corresponding index.
-          pathNamespaces: ["/zh-cn", "/ru-ru", "/ru-ru/v1"],
+            // Use different indexes for path prefixes (namespaces).
+            // NOTE: Only works in 'auto' mode.
+            //
+            // When initialiazing an index, we look for the first path from the sidebar.
+            // If it matches the prefix from the list, we switch to the corresponding index.
+            pathNamespaces: ["/zh-cn", "/ru-ru", "/ru-ru/v1"],
 
-          // You can provide a regexp to match prefixes. In this case,
-          // the matching substring will be used to identify the index
-          pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/,
+            // You can provide a regexp to match prefixes. In this case,
+            // the matching substring will be used to identify the index
+            pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/,
         },
         tabs: {
-          persist: true, // default
-          sync: true, // default
-          theme: "material", // default
-          tabComments: true, // default
-          tabHeadings: true, // default
+            persist: true, // default
+            sync: true, // default
+            theme: "material", // default
+            tabComments: true, // default
+            tabHeadings: true, // default
         },
         count: {
-          countable: true,
-          fontsize: "0.9em",
-          color: "rgb(90,90,90)",
-          // language: "chinese",
-          localization: {
-            words: "字123",
-            minute: "分钟",
-          },
+            countable: true,
+            fontsize: "0.9em",
+            color: "rgb(90,90,90)",
+            // language: "chinese",
+            localization: {
+                words: "字123",
+                minute: "分钟",
+            },
         },
         copyCode: {
-          buttonText: {
-            "/zh-cn/": "点击复制",
-            "/": "Copy to clipboard",
-          },
-          errorText: {
-            "/zh-cn/": "错误",
-            "/": "Error",
-          },
-          successText: {
-            "/zh-cn/": "复制",
-            "/": "Copied",
-          },
+            buttonText: {
+                "/zh-cn/": "点击复制",
+                "/": "Copy to clipboard",
+            },
+            errorText: {
+                "/zh-cn/": "错误",
+                "/": "Error",
+            },
+            successText: {
+                "/zh-cn/": "复制",
+                "/": "Copied",
+            },
         },
         markdown: {
-          renderer: {
-            code: function (code, lang) {
-              if (lang === "mermaid") {
-                return (
-                  '<div class="mermaid">' +
-                  mermaid.render("mermaid-svg-" + num++, code) +
-                  "</div>"
-                );
-              }
-              return this.origin.code.apply(this, arguments);
+            renderer: {
+                code: function (code, lang) {
+                    if (lang === "mermaid") {
+                        return (
+                            '<div class="mermaid">' +
+                            mermaid.render("mermaid-svg-" + num++, code) +
+                            "</div>"
+                        );
+                    }
+                    return this.origin.code.apply(this, arguments);
+                },
             },
-          },
         },
-      };
-    </script>
-    <!-- Docsify v4 -->
-    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
-    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
-  </body>
+    };
+</script>
+<!-- Docsify v4 -->
+<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-docker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
+</body>
 </html>
