@@ -4,7 +4,9 @@
 
 在这个文档里，我们主要教大家如何通过潮汐平台来使用工具和编排，如果你对上传工具/编排有兴趣，请移步[开发文档](https://lev.zone/docs/)。
 
-不同于传统的在线安全工具集成平台，潮汐从架构上做到任务分发和任务运行双端分离，**①工具的调用和运行、②数据的生产和存储展示，都完全依赖于用户私有的本地环境，不经过潮汐云端服务器，从而保障每一位安全人员的的数据安全和隐私安全**。此外，潮汐支持一键启动工具和检测任务，无需进行工具的下载/部署/更新，也无需任何代码，即可完成任务检测！
+不同于传统的在线安全工具集成平台，潮汐从架构上做到任务分发和任务运行双端分离，**①工具的调用和运行、②数据的生产和存储展示，都完全依赖于用户私有的本地环境，不经过潮汐云端服务器，从而保障每一位安全人员的的数据安全和隐私安全**。
+
+此外，潮汐支持一键启动工具和检测任务，无需进行工具的下载/部署/更新，也无需任何代码，即可完成任务检测！
 
 接下来，让我们一起来看一下，如何使用潮汐平台吧！
 
@@ -12,13 +14,15 @@
 
 ## 概览
 
-首先，为了可以正常地运行潮汐上的工具和编排，你需要完成本地环境的配置和搭建。本地环境配置一共有3个步骤，分别是：前置环境安装，凭证上传获取，环境启动。不同的操作系统环境的具体使用方式不同，本手册分为Windows、Linux、Mac三个操作系统环境的安装配置，每个环境都是如下三个步骤：
+首先，为了可以正常地运行潮汐上的工具和编排，你需要完成本地环境的配置和搭建。
+
+本地环境配置一共有3个步骤，分别是：前置环境安装，凭证上传获取，环境启动。
+
+不同的操作系统环境的具体使用方式不同，本手册分为Windows、Linux、Mac三个操作系统环境的安装配置，每个环境都是如下三个步骤：
 
 - 前置环境安装（docker安装）
 - 凭证上传获取
 - 环境启动
-
-
 
 
 
@@ -34,17 +38,11 @@
 
 ​			Windows系统安装docker比较麻烦，需要先开启Windows系统内置的hyper-v功能，建议使用Linux系统或者WSL，方便快捷，以下教程以Win10为示例，且按照Win10系统版本划分(如果不知道自己Win10系统版本，请百度)。
 
-
-
 ##### 			1.1.1 开启CPU支持虚拟化
 
 ​			进入系统BIOS设置，查看BIOS是否开启CPU的虚拟化支持，如下图：			
 
 ​			![开启虚拟化支持.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2e12d9cd-cf65-4c6c-88a2-1b6d42110f22.JPEG)
-
-
-
-
 
 ##### 			1.1.2 Win10家庭版 前置步骤
 
@@ -54,7 +52,7 @@
 
 ​				更新操作系统至最新版本，Windows 设置 -> 更新 -> 检查更新
 
-​				开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)			
+​				开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)		
 
 ​				将下面代码拷入新建文档：			
 
@@ -70,9 +68,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ![安装hyper-v.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/61620bb6-2a0d-4974-a27c-39471f7c0020.png)		
 
-​			安装完毕后输入Y，重启（注意：**如果安装完毕之后更新系统，有可能造成安装无效，需要检查，有必要的话需要重新安装hyper-v**）。
-
-​			
+​			安装完毕后输入Y，重启（注意：**如果安装完毕之后更新系统，有可能造成安装无效，需要检查，有必要的话需要重新安装hyper-v**）。​			
 
 ​			重复上述步骤，将如下代码另存为change.cmd并以管理员身份运行：
 
@@ -80,15 +76,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			至此，Win10家庭版hyper-v启用完毕。
 
-
-
 ##### 			1.1.3 Win10专业版、企业版、教育版
 
 ​			如果是专业版、教育版或者企业版，那么不需要像家庭版那么麻烦，直接在 控制面板 -> 程序 -> 启用或关闭Windows功能 -> 勾选hyper-v，然后按照提示重启即可。
 
-​			以下步骤通用，所有Windows系统都必须执行：
-
-​			
+​			以下步骤通用，所有Windows系统都必须执行：​			
 
 ​			开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
@@ -98,10 +90,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			等待安装成功重启。重启之后，点击docker桌面客户端图标，**Windows**下docker有图形化界面：
 
-​			图形化界面左下角docker引擎标识呈绿色则成功启动![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
+​			图形化界面左下角docker引擎标识呈绿色则成功启动
+
+![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
 ​			如果显示docker启动失败，报错“**因为一个Hyper-V组件未运行**”，那么就是没有启动硬件虚拟化，请执行第一步：**1.1.1 开启CPU支持虚拟化**
-
 
 
 #### 1.2 凭证上传与获取
@@ -109,8 +102,6 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 ​	1. 打开powershell，以管理员身份运行：
 
 ​		![打开powershell.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3d52434b-96e6-445c-9d0f-2d786f09cd4b.png)
-
-
 
 ​	输入ssh，换行，检测系统是否安装了ssh命令：			
 
@@ -152,6 +143,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 ![密钥.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/38c66c66-6a58-4609-800a-032a13f0c3c8.JPEG)
 
 3. 输入`cat ~/.ssh/id_ed25519.pub`命令，查看文件内容，复制输出的内容（powershell不可以直接右键复制，需要特殊操作，详情百度）。
+
    如果实在不会复制，那么也可以通过文件浏览器打开id_ed25519.pub文件，该文件路径为`C盘\用户\(当前用户名)\.ssh\`，复制内容。
 
 4. 登录潮汐安全平台，在`账户设置`—`公钥管理`中，选择上传ssh公钥，名称随意输入，并将上述步骤复制的文件内容添加入至公钥中即可。
@@ -179,11 +171,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```Bash
    $ ssh lev
    Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，请检查ssh公钥和用户名是否正确。
-   
    ```
 
    如果上述流程显示错误，也可以直接输入下列命令行  
-   ```ssh username@service.lev.zone -p 2222 （username替换成潮汐平台用户名，非邮箱账号！）``` 
+   
+   ```ssh username@service.lev.zone -p 2222```（username替换成潮汐平台用户名，非邮箱账号！）
 
    出现如下语句：
    ```Are you sure you want to continue connecting (yes/no/[fingerprint])?``` 后立即输入yes并按回车，请勿等待过长时间，否则可能启动失败。
@@ -209,6 +201,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e46b4413-d432-4817-89c3-6abd73b645e8.png)
+   
    粘贴以下代码
 
    ```Bash
@@ -233,6 +226,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```
 
    最终，在【账户设置-我的设备】中，可以看到该设备已经上线！
+   
    进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
 ​	
 
@@ -243,9 +237,10 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 ​		请使用国内源，否则速度会很慢：
 
 ​		Ubuntu：[参考文档](https://docs.docker.com/engine/install/ubuntu/)
+
 ​		CentOS：[参考文档](https://docs.docker.com/engine/install/centos/)
+
 ​		Debian：[参考文档](https://docs.docker.com/engine/install/debian/)
-​		  
 
 #### 2. 生成 ssh密钥
 
@@ -265,6 +260,7 @@ $ ssh-keygen -t ed25519 -C "youremail@example.com"
 #### 4. 配置ssh config 文件
 
 `touch ~/.ssh/config`
+
 写入以下配置：
 
 ```bash
@@ -281,17 +277,15 @@ $ ssh lev
 Connection to service.lev.zone closed. # 显示此消息即配置成功。
 ```
 
-
 如返回以下消息，则说明配置文件有问题，请检查前述配置步骤：
 
 ```Bash
 $ ssh lev
 Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，请检查ssh公钥和用户名是否正确。
-
 ```
 
 如果上述流程显示错误，也可以直接输入下列命令行：
-```ssh username@service.lev.zone -p 2222（username替换成潮汐平台用户名）```
+```ssh username@service.lev.zone -p 2222```（username替换成潮汐平台用户名，非邮箱账号！）
 
 出现如下语句：
 ```Are you sure you want to continue connecting (yes/no/[fingerprint])?``` 后立即输入yes并按回车，请勿等待过长时间，否则可能启动失败。
@@ -312,10 +306,12 @@ INFO:root:Agent is ready
 执行命令后将自动拉取镜像容器、启动容器，整个过程可能持续几分钟的时间。待容器全部启动完毕，则一切准备就绪！
 
 最终，在【账户设置-我的设备】中，可以看到该设备已经上线！
+
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/64c575b9-3ea3-494c-b25c-191835f2ba78.png)
 
-接下来，让我们来看看怎么使用潮汐来运行工具/编排，进行资产的安全检测吧！进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
+接下来，让我们来看看怎么使用潮汐来运行工具/编排，进行资产的安全检测吧！
 
+进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
 
 
 ### Mac
@@ -323,15 +319,21 @@ INFO:root:Agent is ready
 #### 安装docker
 
 如果你的设备上已经安装过docker，请检查其版本号，潮汐支持的版本号不低于**20.10.10**，否则请进行更新。
-进入docker官方网站的下载页面[https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)，并找到符合自己电脑操作系统的docker进行下载并安装；
+
+进入[docker官方网站的下载页面](https://docs.docker.com/get-docker/)，并找到符合自己电脑操作系统的docker进行下载并安装；
+
 **Mac**下docker有图形化界面：
 
 图形化界面左下角docker引擎标识呈绿色则成功启动。
+
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
 #### 生成ssh公钥
 
-在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
+在Mac下打开文件夹（访达/Finder），按下`shift`+`command`+`G`组合键，将出现如下弹框，并在其中输入`~/.ssh`回车，进入.ssh目录后，查看是否有"id_ed25519"、"id_ed25519.pub"文件!
+
+[image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e109ae0f-9bc1-4ea7-912f-b9641720f9fb.JPEG)
+
 如没有，则在命令行输入下列命令来生成：
 
 ```
@@ -371,17 +373,15 @@ $ ssh lev
 Connection to service.lev.zone closed. # 显示此消息即配置成功。
 ```
 
-
 如返回以下消息，则说明配置文件有问题，请检查前述配置步骤：
 
 ```Bash
 $ ssh lev
 Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，请检查ssh公钥和用户名是否正确。
-
 ```
 
 如果上述流程显示错误，也可以直接输入下列命令行：
-```ssh username@service.lev.zone -p 2222（username替换成潮汐平台用户名）``` 
+```ssh username@service.lev.zone -p 2222```（username替换成潮汐平台用户名，非邮箱账号！）
 
 出现如下语句：
 ```Are you sure you want to continue connecting (yes/no/[fingerprint])? ```后立即输入yes并按回车，请勿等待过长时间，否则可能启动失败。
@@ -399,15 +399,9 @@ INFO:root:Agent is ready
 # 出现此语句则表示启动成功。
 ```
 
-执行命令后将自动拉取镜像容器、启动容器，整个过程可能持续几分钟的时间。待容器全部启动完毕则一切准备就绪！之后进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
+执行命令后将自动拉取镜像容器、启动容器，整个过程可能持续几分钟的时间。待容器全部启动完毕则一切准备就绪！
 
-
-
-
-
-
-
-
+之后进入[下一步](https://lev.zone/portal/get-started#2.-%E6%BD%AE%E6%B1%90%E5%AE%89%E5%85%A8%E5%B9%B3%E5%8F%B0)
 
 
 
@@ -473,18 +467,18 @@ INFO:root:Agent is ready
 
 新建好后，将进入下述流程，让我们来看一看需要填写哪些信息，以完成任务的创建吧！
 
-这里我们用wafw00f这个工具来举例，完成一个目标防火墙部署识别任务。
-
-在创建任务时，第一步就是选择运行模式：
+在创建任务时，第一步就是选择调用模式：
 
 - 快速模式：无需代码知识，直接在网页输入参数即可一键启动检测。
-- 高级模式：可以发挥100%的工具能力，高自由度，方便调试和进阶用户使用。
+- 自定义模式：可以发挥100%的工具能力，高自由度，方便调试和进阶用户使用。
 
 #### 2.3.1 快速模式
 
+这里我们用wafw00f这个工具举例，来完成一个目标防火墙部署识别任务。
+
 选择simple快速使用模式，调用方式保持默认（即快速模式），然后填入任务所需要的参数，提交即可。
 
-简单的调用仅仅只需要填入基础的目标信息，就可以完成一次检测。
+简单的调用只需要填入基础的目标信息，就可以完成一次检测。
 
 ![image_7.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2d6c5bff-8d80-4b93-a18f-dc107b05080d.png)
 
@@ -494,11 +488,11 @@ INFO:root:Agent is ready
 
 #### 2.3.2 自定义模式
 
-现在我们学会了简单的调用，但是渗透测试实战情况瞬息万变，如何才能发挥工具的最强性能呢？
+但是渗透测试实战情况瞬息万变，如何才能发挥工具的最强性能呢？
 
 本章教给大家如何使用原生模式对工具进行自定义调用。
 
-这边我选择 nmap 对某个 IP 进行自定义扫描。
+这边我选择nmap对某个IP进行自定义扫描。
 
 首先，进入添加任务界面。
 
@@ -506,19 +500,17 @@ INFO:root:Agent is ready
 
 ![nmap_raw.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/5df63e26-2ca2-424b-aa62-ba9ace3de66e.JPEG)
 
-工具命令和命令行使用是完全一致的，唯一不同的是 argv 参数是一个列表，我们唯一要做的就是将输入的命令用列表的方式传入 argv 参数。
+工具命令和命令行使用是完全一致的，唯一不同的是argv参数是一个列表，我们唯一要做的就是将输入的命令用列表的方式传入argv参数。
 
 具体工具有哪些参数和命令，可以移步此工具的官方文档。
 
-例如，我这边想对一个 IP 进行扫描，于是我们的命令行请求为：
+例如，我这边想对一个IP进行扫描，于是我们的命令行请求为：
 
 ```Bash
 nmap -T4 -A -v -Pn IP	
 ```
 
-
 空格为元素间隔，转换成列表为下面所示：
-
 
 ![nmap_command.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/1f1d2acf-b581-48ad-befb-5017b0d96b24.JPEG)
 
