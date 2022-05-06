@@ -556,7 +556,7 @@ Here you can see that the task is running. First, you can view the task log by c
 
 If the log cannot be used to directly identify or solve the problem, select the Debug button.
 
-![image_13.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4dd15574-2cfd-403d-92d9-2c661f26a24b.JPEG)
+![debug_en](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/efc3a8d5-6d97-4b3a-b2b7-803e94136411.JPEG)
 
 The platform will give a debug command. We copy it into the command line of the environment for execution, and we can enter the debug command line inside the container.
 
