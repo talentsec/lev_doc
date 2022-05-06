@@ -36,7 +36,7 @@
 
 ​			如果你的设备上已经安装过docker，请检查其版本号，潮汐支持的版本号不低于**20.10.10**，如果满足条件，可以跳过此步骤，否则请进行更新。
 
-​			Windows系统安装docker比较麻烦，需要先开启Windows系统内置的hyper-v功能，建议使用Linux系统或者WSL，方便快捷，以下教程以Win10为示例，且按照Win10系统版本划分(如果不知道自己Win10系统版本，请百度)。
+​			Windows系统安装docker比较麻烦，需要先开启Windows系统内置的hyper-v功能，建议使用Linux系统或者WSL，方便快捷，以下教程以Win10为示例，且按照Win10系统版本划分（如果不知道自己Win10系统版本，请百度）。
 
 ##### 			1.1.1 开启CPU支持虚拟化
 
@@ -82,13 +82,13 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ​			以下步骤通用，所有Windows系统都必须执行：​			
 
-​- 开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
+- 开启显示文件扩展名，详情参考[显示文件扩展名](https://jingyan.baidu.com/article/f7ff0bfcc9c0e12e26bb13a0.html)
 
-​- [下载docker安装文件](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
+- [下载docker安装文件](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
 
-​- 点击文件开始安装docker（家庭版需要在安装时取消勾选Windows容器WSL2那个选项，其他版本不需要）
+- 点击文件开始安装docker（家庭版需要在安装时取消勾选Windows容器WSL2那个选项，其他版本不需要）
 
-​- 等待安装成功重启
+- 等待安装成功重启
 
 - 重启之后，点击docker桌面客户端图标，**Windows**下docker有图形化界面：
 
@@ -96,7 +96,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/87fe783c-f999-4b50-85f9-99a0080d6561.png)
 
-​			如果显示docker启动失败，报错“**因为一个Hyper-V组件未运行**”，那么就是没有启动硬件虚拟化，请执行第一步：**1.1.1 开启CPU支持虚拟化**
+​			如果显示docker启动失败，报错“**因为一个Hyper-V组件未运行**”，那么就是没有启动硬件虚拟化，请执行第一步：**1.1.1 开启CPU支持虚拟化**。
 
 #### 1.2 凭证上传与获取
 
@@ -117,11 +117,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 ![查看ssh密钥.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2997d374-f873-439b-ba77-d567adae155e.png)
 
-如上图所示，显示红色字符、找不到路径的提示，意味着文件不存在，这时候就需要创建(**如果存在，那么直接跳过生成步骤**)，输入下面命令，换行执行：
+如上图所示，显示红色字符、找不到路径的提示，意味着文件不存在，这时候就需要创建（**如果存在，那么直接跳过生成步骤**），输入下面命令，换行执行：
 
 ​		```ssh-keygen.exe -t ed25519```
 
-会提示输入，不用管，按Enter键一路到底就好，直到出现如下提示即为完成(注：不建议使用默认的rsa加密方法生成密钥，高版本的openssh中会默认禁用rsa密钥)：
+会提示输入，不用管，按Enter键一路到底就好，直到出现如下提示即为完成（注：不建议使用默认的rsa加密方法生成密钥，高版本的openssh中会默认禁用rsa密钥）：
 
 ```vbscript
 +---[ed25519 256]----+
@@ -143,11 +143,11 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 3. 输入`cat ~/.ssh/id_ed25519.pub`命令，查看文件内容，复制输出的内容（powershell不可以直接右键复制，需要特殊操作，详情百度）。
 
-   如果实在不会复制，那么也可以通过文件浏览器打开id_ed25519.pub文件，该文件路径为`C盘\用户\(当前用户名)\.ssh\`，复制内容。
+   如果实在不会复制，那么也可以通过文件浏览器打开id_ed25519.pub文件，该文件路径为`C盘\用户\（当前用户名）\.ssh\`，复制内容。
 
 4. 登录潮汐安全平台，在`账户设置`—`公钥管理`中，选择上传ssh公钥，名称随意输入，并将上述步骤复制的文件内容添加入至公钥中即可。
 
-5. 在第三步的路径下，该文件路径为`C盘\用户\(当前用户名)\.ssh\`，创建`新建文本文档.txt`，打开并复制添加以下内容保存：
+5. 在第三步的路径下，该文件路径为`C盘\用户\（当前用户名）\.ssh\`，创建`新建文本文档.txt`，打开并复制添加以下内容保存：
 
    ```yaml
    Host lev
@@ -209,7 +209,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
      ]
    ```
 
-   粘贴的位置如下图所示(新手Tips：`"buildkit": true`下面一行的花括号后面需要加上一个半角的逗号，代码粘贴位置为最下面一行花括号的前面，否则会出现异常)
+   粘贴的位置如下图所示（新手Tips：`"buildkit": true`下面一行的花括号后面需要加上一个半角的逗号，代码粘贴位置为最下面一行花括号的前面，否则会出现异常）：
    
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/575d3a79-7772-4318-a566-7293f809a4c5.png)
    
@@ -292,7 +292,7 @@ Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，�
 
 首先，在【账户设置-我的设备】页面添加设备，输入一个名称，再点击提交即可。
 
-接下来，执行以下命令启动本地环境(如果拉取速度慢的话，建议修改docker的镜像源为中科大)：
+接下来，执行以下命令启动本地环境（如果拉取速度慢的话，建议修改docker的镜像源为中科大）：
 
 ```bash
 $ ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
@@ -387,7 +387,7 @@ Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，�
 
 首先，在【账户设置-我的设备】页面添加设备，输入一个名称，再点击提交即可。
 
-接下来，执行以下命令启动本地环境(如果拉取速度慢的话建议修改docker的镜像源为中科大，详情百度)：
+接下来，执行以下命令启动本地环境（如果拉取速度慢的话建议修改docker的镜像源为中科大，详情百度）：
 
 ```bash
 $ ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
