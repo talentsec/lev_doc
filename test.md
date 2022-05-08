@@ -14,7 +14,7 @@ $ mkdir hello-world
 
 ```bash
 $ cd hello-world
-$ pdm init # 初始化工作区文件夹，会生成必须文件
+$ pdm init # 初始化
 $ pdm add levrt
 ```
 
