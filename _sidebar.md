@@ -1,4 +1,5 @@
 * [1. Introduction](1.introduction.md)
+    * [1.1 Word introduction](1.1.word-introduction.md)
 * [2. Reading guide](2.guide.md)
 * [3. Configuration](3.configuration.md)
     * [3.1 Windows](3.1.windows.md)
@@ -16,4 +17,3 @@
 * [13. Upload package](13.upload-package.md)
 * [14. FAQ](14.faq.md)
 * [15. API reference](15.api.md)
-
