@@ -4,8 +4,7 @@
 
 1、 **Target object**：**everyone (including developers)**
 
-2、 **Document use**：
-- After the configuration of the environment according to this document, users can use all the tools on LEVIATHAN online without any deployment and installation of a single tool, which greatly improves the work efficiency of security personnel.
+2、 **Document use**：After the configuration of the environment according to this document, users can use all the tools on LEVIATHAN online without any deployment and installation of a single tool, which greatly improves the work efficiency of security personnel.
 
 3、 **Instructions for use**：
 - For users of LEV, all the tools will be used at will only after completing the configuration of the environment according to the " Usage Guide ";
