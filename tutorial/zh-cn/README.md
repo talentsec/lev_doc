@@ -11,16 +11,6 @@
 - 针对于平台的使用者，只需根据「使用说明」进行平台配置即可使用平台上所有的工具；
 - 针对于平台的开发者，「使用说明」是开发工具的前置步骤，完成「使用说明」配置之后需要根据「开发文档」的说明完成工具的开发。
 
-**【[开发文档](https://lev.zone/docs/#/zh-cn/)】**
-
-1、 **目标对象**：**仅针对潮汐平台上的开发者**
-
-2、 **文档功能**：潮汐平台的开发流程最佳实践，覆盖了①如何开发单模式/多模式工具、②如何开发调用多个工具的自动化编排，提高开发效率。
-
-3、 **使用指导**：针对于平台的开发者，必须先根据「使用说明」进行平台配置，然后依照「开发文档」进行工具的开发。
-
-
-
 # 潮汐安全平台使用说明
 
 欢迎来到潮汐安全平台，在这里，你可以方便地调用一切平台上已集成的安全工具和编排，快速对资产进行检测，也可以成为一名开发者/贡献者，为其他安全人员贡献工具和编排。
@@ -84,7 +74,7 @@ pushd "%~dp0"
 dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
 for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
 del hyper-v.txt
-Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL 
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
 ```
 
 ​				将文档另存为install-hyper-v.cmd，右键点击 管理员运行：
@@ -196,7 +186,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```
 
    如果上述流程显示错误，也可以直接输入下列命令行  ：
-   
+
    ```ssh username@service.lev.zone -p 2222```（username替换成潮汐平台用户名，非邮箱账号！）
 
    出现如下语句：
@@ -223,7 +213,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```
 
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/e46b4413-d432-4817-89c3-6abd73b645e8.png)
-   
+
    粘贴以下代码：
 
    ```Bash
@@ -233,9 +223,9 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```
 
    粘贴的位置如下图所示（新手Tips：`"buildkit": true`下面一行的花括号后面需要加上一个半角的逗号，代码粘贴位置为最下面一行花括号的前面，否则会出现异常）：
-   
+
    ![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/575d3a79-7772-4318-a566-7293f809a4c5.png)
-   
+
    点击Apply&Restart即可！
 
    完成了上述加速操作后，再次执行以下命令启动本地环境：
@@ -248,14 +238,12 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
    ```
 
    最终，在【账户设置-我的设备】中，可以看到该设备已经上线！
-   
-	
+
+
 
 ### Linux
 
 #### 1.  安装 docker
-
-​		请使用国内源，否则速度会很慢：
 
 ​		Ubuntu：[参考文档](https://docs.docker.com/engine/install/ubuntu/)
 
@@ -265,7 +253,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 #### 2. 生成 ssh密钥
 
-输入命令`ls -la ~/.ssh`，检测系统是否存在ssh密钥，如果不存在请按照教程生成密钥对：	
+输入命令`ls -la ~/.ssh`，检测系统是否存在ssh密钥，如果不存在请按照教程生成密钥对：
 
 ```
 $ ssh-keygen -t ed25519 -C "youremail@example.com"
@@ -276,7 +264,7 @@ $ ssh-keygen -t ed25519 -C "youremail@example.com"
 
 #### 3. 上传
 
-登录潮汐安全平台，在`账户设置`—`公钥管理`中，选择上传ssh公钥，名称随意输入，并将上述步骤生成的.ssh文件夹下的id_ed25519.pub公钥文件内容复制加入至公钥中即可。
+登录潮汐平台，在 `账户头像` - `账户设置` — `公钥管理` 中，选择 `创建SSH公钥` ，名称可以随意输入，这里我们输入 `main` ，并将上述步骤生成的.ssh文件夹下的id_ed25519.pub公钥文件内容复制加入至公钥中即可。
 
 #### 4. 配置ssh config 文件
 
@@ -306,33 +294,27 @@ Permission denied (publickey). # 显示此消息说明ssh公钥配置有误，�
 ```
 
 如果上述流程显示错误，也可以直接输入下列命令行：
-```ssh username@service.lev.zone -p 2222```（username替换成潮汐平台用户名，非邮箱账号！）
 
-出现如下语句：
-```Are you sure you want to continue connecting (yes/no/[fingerprint])?``` 后立即输入yes并按回车，请勿等待过长时间，否则可能启动失败。
+```bash
+ssh username@service.lev.zone -p 2222
+# （username替换成潮汐平台用户名，非邮箱账号！）
+```
 
 #### 5. 启动
 
-首先，在【账户设置-我的设备】页面添加设备，输入一个名称，再点击提交即可。
+在 `账户头像` - `账户设置` - `我的设备` 页面，选择 `添加设备`，随意输入一个名称，点击提交即可。
 
-接下来，执行以下命令启动本地环境（如果拉取速度慢的话，建议修改docker的镜像源为中科大）：
+接下来，执行以下命令启动本地环境：
 
 ```bash
-$ ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
-# 出现如下语句：Are you sure you want to continue connecting (yes/no/[fingerprint])? 后立即输入yes并按回车，请勿等待过长时间，否则可能启动失败。
-INFO:root:Agent is ready
-# 出现此语句则表示启动成功。
+ssh lev agent | docker run -v /var/run/docker.sock:/docker --rm -i talentsec/lev
 ```
 
-执行命令后将自动拉取镜像容器、启动容器，整个过程可能持续几分钟的时间。待容器全部启动完毕，则一切准备就绪！
+该命令将自动拉取镜像、启动容器，整个过程可能持续几分钟的时间。
 
-最终，在【账户设置-我的设备】中，可以看到该设备已经上线！
+命令执行完毕后，在 `账户头像` - `账户设置` - `我的设备` 页面，可以看到该设备已经上线。
 
-![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/64c575b9-3ea3-494c-b25c-191835f2ba78.png)
-
-接下来，让我们来看看怎么使用潮汐来运行工具/编排，进行资产的安全检测吧！
-
-
+![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+14.05.37.png)
 
 ### Mac
 
@@ -423,137 +405,75 @@ INFO:root:Agent is ready
 
 
 
-## 2. 潮汐安全平台
+## 2. 潮汐平台使用
 
-登录潮汐安全平台后，可以看到在目录栏一共有6项。
+### 2.1 平台功能介绍
 
-![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/18e05be5-ed18-4903-9b20-4c48d5c28b30.png)
+登录潮汐安全平台后，可以看到主页如下图所示，在目录栏一共有6个选项。
 
-- 任务：我运行过的检测任务
-- 收藏：我收藏的工具/编排/作者
-- 仓库：我上传的工具/编排
-- 市场：全平台工具/编排的汇总
-- 论坛：教程汇集地以及交流处
-- 文档：平台使用文档以及开发文档
+![image.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+14.21.40.png)
 
-### 2.1 选择教程
+>任务：用于显示任务清单，按照任务状态分别展示
+>
+>收藏：用于展示收藏的编排、工具和作者
+>
+>仓库：用于管理和展示你开发的工具、镜像，并且进行授权管理
+>
+>市场：潮汐平台开源安全工具、编排市场
+>
+>论坛：用于展示潮汐平台最新消息、官方团队消息以及用户讨论
+>
+>文档：潮汐平台的使用文档和开发文档
 
-如果这是你第一次来到潮汐，你也许会不知道从何开始、应该先体验哪些工具，那么你可以先进入论坛页面，根据官方提供的渗透教程1-4篇，轻松在潮汐上完成一次Web渗透！
+### 2.2 使用工具
 
-![image_1.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/0c5d1e0b-6024-41d6-a742-c6b4aa87e502.png)
+### 2.2.1 选择官方工具
 
-### 2.2 选择工具
+进入 `市场` 选项卡，选择左侧的分类，
+> 将 `类型` 选择为 `工具`
+>
+> 将 `过滤` 选择为 `官方`
+>
+> 并在 `搜索输入框` 输入 `nmap`
 
-如果你有明确想要使用的工具，也可以先跳过教程，在市场找到相关的工具/编排，直接运行任务。
+可以看到官方集成的工具 `nmap`：
 
-![image_2.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/dd7c358b-2b01-440e-852d-d49fdab60c27.png)
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+14.43.36.png)
 
-找到想要使用的工具，进入工具页面。
+### 2.2.2 了解工具信息
 
-![image_3.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/098fd6cb-5afb-4348-bffb-c951577b372f.png)
+进入工具主页，可以看到页面分为4个选项卡:
 
-工具页面分为如下四个模块：
+> 基本信息：展示工具的介绍、多种模式以及版本等核心信息
+>
+> 源码文件：展示工具的源码（以包为核心）
+>
+> 交流面板：展示社区用户对该工具的反馈及交流信息
+>
+> 运行记录：展示当前账户对该工具的使用记录
 
-![image_4.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/7d1add24-d3d1-4f65-808f-a28fe95b9163.png)
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+18.08.55.png)
 
-- 基本信息
-  此模块简单描述工具的作用和版本。主要描述工具的接口使用说明，例如采取快速模式运行此工具，只需要输入url参数，类型为str字符串。
-- 源码文件
-  这里可以直接查看工具的调用源码，用作学习和研究。
-- 交流面板
-  在这里可以分享你对此工具的使用技巧和想法。
-- 运行记录
-  可以查看对此工具的调用记录。
+### 2.2.3 运行工具
 
----
+可以看到，`nmap` 提供了 `raw`、`typical`、`alive`、`traceroute`、`port_os` 5种模式供调用，值得一提的是，大部分官方工具都提供了 `raw` 模式在内的多种模式。
 
-找到想运行的工具后，接下来就可以进行任务的创建啦！
+> raw 模式：可以理解为原生模式，未经过场景化
+>
+> 其他模式：工具的不同场景化模式
 
-#### 2.2.1 方式一 在工具页面新建任务
+这里我们准备使用 `traceroute` 模式，可以看到 `使用说明` 部分已经介绍了该模式的工作原理和使用方式：
 
-在工具右上方直接点击`新建任务`，可以快速进入此工具的调用界面。
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+18.59.17.png)
 
-![image_5.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/b57a17db-c6af-4095-8799-0d1f922bf5bf.png)
+继续选择 `新建任务` 选项卡，进入 `添加任务` 页面，选择 `nmap 路由追踪...` 模式后，可以看到页面弹出了需要配置的参数组，填好待配置的内容，点击 `提交` 即可运行：
 
-#### 2.2.2 方式二 收藏工具/编排后创建任务
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+19.03.38.png)
 
-在工具页面的右上方选择`收藏工具`将工具添加入收藏，加入收藏之后，可以在`我的收藏`里面查看到收藏的工具，并且新建任务。
+### 2.3 查看结果
 
-![image_6.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/37a60e4f-ba39-490d-aa75-25ca6511019b.png)
+任务执行完毕之后，点击 `运行结果` 按钮，可以查看任务的运行结果。通过刚刚的任务，我们可以很容易地从结果中判断出从任务执行器到 `lev.zone` 的路由节点。
 
-### 2.3 新建第一个任务
+> 注：由于 Mac/Windows 平台的 Docker Desktop 实现尚不完善，因此 nmap 的 traceroute 功能可能会结果异常，在高可靠性场景下，建议使用 Linux 平台作为潮汐平台的执行环境。
 
-新建好后，将进入下述流程，让我们来看一看需要填写哪些信息，以完成任务的创建吧！
-
-在创建任务时，第一步就是选择调用模式：
-
-- 快速模式：无需代码知识，直接在网页输入参数即可一键启动检测。
-- 自定义模式：可以发挥100%的工具能力，高自由度，方便调试和进阶用户使用。
-
-#### 2.3.1 快速模式
-
-这里我们用wafw00f这个工具举例，来完成一个目标防火墙部署识别任务。
-
-选择simple快速使用模式，调用方式保持默认（即快速模式），然后填入任务所需要的参数，提交即可。
-
-简单的调用只需要填入基础的目标信息，就可以完成一次检测。
-
-![image_7.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2d6c5bff-8d80-4b93-a18f-dc107b05080d.png)
-
-可以看到任务正在执行中，等待任务执行完成即可查看结果。
-
-![image_8.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/103afcb5-1282-4e78-93ac-91a87e82ab9e.png)
-
-#### 2.3.2 自定义模式
-
-但是渗透测试实战情况瞬息万变，如何才能发挥工具的最强性能呢？
-
-本章教给大家如何使用原生模式对工具进行自定义调用。
-
-这边我选择nmap对某个IP进行自定义扫描。
-
-首先，进入添加任务界面。
-
-在添加任务界面，选择模式为raw原生模式，调用方式保持默认（即自定义模式），保持不变。
-
-![nmap_raw.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/5df63e26-2ca2-424b-aa62-ba9ace3de66e.JPEG)
-
-工具命令和命令行使用是完全一致的，唯一不同的是argv参数是一个列表，我们唯一要做的就是将输入的命令用列表的方式传入argv参数。
-
-具体工具有哪些参数和命令，可以移步此工具的官方文档。
-
-例如，我这边想对一个IP进行扫描，于是我们的命令行请求为：
-
-```Bash
-nmap -T4 -A -v -Pn IP	
-```
-
-空格为元素间隔，转换成列表，如下所示：
-
-![nmap_command.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/1f1d2acf-b581-48ad-befb-5017b0d96b24.JPEG)
-
-之后提交即可。
-
-### 2.4 查看结果
-
-任务执行完毕之后，我们点击`运行结果`按钮查看任务的运行结果，这样就完成了一次简单的工具调用。
-
-![result_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/2535037b-300d-41a5-810d-73ff5f0eb967.JPEG)
-
-### 2.5 调试
-
-任务运行过程中有可能会产生一些预期之外的错误，大多数是输入参数引起的，例如目标无法访问，或者只是单纯地打错URL。那我们如何对进行调试呢？
-
-![debug_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/9502f37b-9b37-4418-bb3f-2699c72f9260.JPEG)
-
-这里可以看到任务正在运行，首先可以在日志按钮里查看任务日志，以查看任务运行情况。
-
-如果日志并不能直接确定或者解决问题，可以选择调试按钮。
-
-![debug_command_zh.jpg](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/3ace06ff-a2a8-4d32-b424-92b5240f936b.JPEG)
-
-平台会给出一条调试命令，我们将这条命令复制入环境的命令行进行执行，可以进入容器内部的调试命令行。
-
-ipdb是集成了ipython的python代码命令行调试工具，具体使用可以移步ipdb的说明文档。
-
-![image_15.png](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/4d65446f-dfc3-4e73-860b-c3eeb323dcfc.png)
+![](https://levimg.s3.cn-northwest-1.amazonaws.com.cn/x/%E6%88%AA%E5%B1%8F2022-05-29+19.17.21.png)
