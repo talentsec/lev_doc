@@ -5,7 +5,7 @@
     * [3.1 Windows](zh-cn/3.1.Windows.md)
     * [3.2 Mac](zh-cn/3.2.Mac.md)
     * [3.3 Linux](zh-cn/3.3.Linux.md)
-* [4. 凭证上传与获取](zh-cn/4.凭证上传与获取.md)
+* [4. 认证与Token](zh-cn/4.认证与Token.md)
 * [5. Hello World](zh-cn/5.Hello_World.md)
 * [6. 接入潮汐平台](zh-cn/6.接入潮汐平台.md)
 * [7. 更新 Hello World](zh-cn/7.更新Hello_World.md)
