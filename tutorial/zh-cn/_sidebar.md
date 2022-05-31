@@ -1,2 +1,6 @@
-* [1. 环境配置](zh-cn/1.环境配置.md)
-* [2. 平台使用](zh-cn/2.平台使用.md)
+* [1. 平台介绍](zh-cn/1.平台介绍.md)
+* [2. 环境配置](zh-cn/2.环境配置.md)
+    * [2.1 Windows](zh-cn/2.1.Windows.md)
+    * [2.2 Mac](zh-cn/2.2.Mac.md)
+    * [2.3 Linux](zh-cn/2.3.Linux.md)
+* [3. 平台使用](zh-cn/3.平台使用.md)
