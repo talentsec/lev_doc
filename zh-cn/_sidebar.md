@@ -14,7 +14,7 @@
 * [10. 本地调试](zh-cn/10.本地调试.md)
 * [11. 镜像上传](zh-cn/11.镜像上传.md)
 * [12. 编排示例](zh-cn/12.编排示例.md)
-* [13. 编排多种实践方式](zh-cn/13.编排多种实践方式.md)
+* [13. 潮汐SDK](zh-cn/13.潮汐SDK.md)
 * [14. FAQ](zh-cn/14.FAQ.md)
 * [15. API接口](zh-cn/15.API接口.md)
     * [levrt.annot.meta](zh-cn/API.levrt.annot.meta.md)
