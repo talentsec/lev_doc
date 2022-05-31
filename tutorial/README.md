@@ -14,7 +14,6 @@ Welcome to the Leviathan platform. On LEV, you can
 
 In this document, I will show you how to use the tools and workflows on LEV. If you are ha'hinterested in becoming a tool developer on LEV, [Developer Guide](https://lev.zone/docs/#/) should be a good start.
 
-与传统的在线安全工具集成平台不同，潮汐从架构上做到了任务调度和运行的分离，同时可以为工具的使用和集成提供极大的开放性。
 Different from most of the traditional online tool platform, LEV separates task scheduling and task operation from the perspective of architecture. Therefore, LEV provides great flexibility for tool usage and integration.
 
 > We put a lot of emphasis on protecting your data and information. Your data security is important to us.
