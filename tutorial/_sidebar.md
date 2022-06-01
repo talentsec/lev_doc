@@ -1,6 +1,6 @@
 * [1. Introductino to LEV](1.Introduction_to_LEV.md)
 * [2. Environment Configuration](2.Environment_Configuration.md)
     * [2.1 Windows](2.1.Windows_en.md)
-    * [2.2 Mac](2.2.Mac.md)
+    * [2.2 Mac](2.2.Mac_en.md)
     * [2.3 Linux](2.3.Linux.md)
 * [3. Platform Usage Guide](3.Platform_Usage_Guide.md)
