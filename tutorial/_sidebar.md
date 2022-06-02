@@ -2,5 +2,5 @@
 * [2. Environment Configuration](2.Environment_Configuration.md)
     * [2.1 Windows](2.1.Windows_en.md)
     * [2.2 Mac](2.2.Mac_en.md)
-    * [2.3 Linux](2.3.Linux.md)
+    * [2.3 Linux](2.3.Linux_en.md)
 * [3. Platform Usage Guide](3.Platform_Usage_Guide.md)
