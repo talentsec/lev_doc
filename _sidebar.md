@@ -1,5 +1,5 @@
-* [1. Introduction](1.introduction.md)
-    * [1.1 Word introduction](1.1.word-introduction.md)
+* [1. Overview](1.introduction.md)
+    * [1.1 Introduction and Concepts](1.1.word-introduction.md)
 * [2. Reading guide](2.guide.md)
 * [3. Configuration](3.configuration.md)
     * [3.1 Windows](3.1.windows.md)
