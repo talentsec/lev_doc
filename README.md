@@ -1,4 +1,4 @@
-What you are reading now is the Developer Guide of LEV. It introduces how to quickly develop and debug cyber security tools/workflow on LEV.
+What you are reading now is the Developer Guide of LEV. It introduces how to quickly develop and debug cybersecurity tools/workflow on LEV.
 
 ## Before reading
 

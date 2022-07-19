@@ -1,7 +1,7 @@
 * [1. Overview](1.introduction.md)
     * [1.1 Introduction and Concepts](1.1.word-introduction.md)
 * [2. Reading guide](2.guide.md)
-* [3. Developement environment configuration](3.configuration.md)
+* [3. Development environment configuration](3.configuration.md)
     * [3.1 Windows](3.1.windows.md)
     * [3.2 Mac](3.2.mac.md)
     * [3.3 Linux](3.3.linux.md)

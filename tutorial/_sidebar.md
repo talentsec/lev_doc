@@ -1,4 +1,4 @@
-* [1. Introductino to LEV](1.Introduction_to_LEV.md)
+* [1. Introduction to LEV](1.Introduction_to_LEV.md)
 * [2. Environment Configuration](2.Environment_Configuration.md)
     * [2.1 Windows](2.1.Windows_en.md)
     * [2.2 Mac](2.2.Mac_en.md)
