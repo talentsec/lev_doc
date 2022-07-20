@@ -11,9 +11,9 @@ What you are reading now is the Developer Guide of LEV. It introduces how to qui
 
 3. **Usage Guide**:
 
-- For tool users, all you need to do is to complete platform configuration as described in this document, and you can access and leverage all tools on LEV.
+- For tool users, all you need to do is to complete platform configuration as described in this document, and then you can access and leverage all tools on LEV.
 
-- For tool developers, this document is the prerequisite of developing tools on LEV. After platform configuration, you can read 「Developer Guide」to learn more details on how to develop on LEV.
+- For tool developers, the first step in developing tools on LEV is to complete the platform configuration as described in this document. After platform configuration, you can read 「Developer Guide」to learn more details on how to develop on LEV.
 
 **【[How to develope](https://lev.zone/docs/#/zh-cn/)】**
 
