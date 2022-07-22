@@ -15,7 +15,7 @@ What you are reading now is the Developer Guide of LEV. It introduces how to qui
 
 - For tool developers, this document is the prerequisite of developing tools on LEV. After platform configuration, you can read 「Developer Guide」to learn more details on how to develop on LEV.
 
-**【[How to develope](https://lev.zone/docs/#/zh-cn/)】**
+**【[How to develop](https://lev.zone/docs/#/zh-cn/)】**
 
 1. **Target Audience****: **Only tool developers**
 
